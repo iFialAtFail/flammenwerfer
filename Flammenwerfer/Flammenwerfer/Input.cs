@@ -48,11 +48,16 @@ namespace Flammenwerfer
             }
             else
             {
-                Console.WriteLine("Invalid entry");
-                Console.WriteLine("Press any key to continue...");
-                Console.ReadLine();
-                InputReader();
+                ResetWrongValue();
             }
+        }
+
+        private void ResetWrongValue()
+        {
+            Console.WriteLine("Invalid entry");
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadLine();
+            InputReader();
         }
         #endregion
 
