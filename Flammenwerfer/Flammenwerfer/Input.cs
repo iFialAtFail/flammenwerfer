@@ -12,6 +12,8 @@ namespace Flammenwerfer
         string sParsedInCommand = "";
         string sInputCommand = "";
         string[] sSeperatedCMD = { "", "", "" };
+        XML_Creator creation = new XML_Creator();
+        XML_Changer editor = new XML_Changer();
         #endregion
 
         #region Input Handler
@@ -38,7 +40,11 @@ namespace Flammenwerfer
             }
             else if (sSeperatedCMD[0] == "set")
             {
-                //SEND TO CREATION STEP
+                creation.FileTest();
+            }
+            else if (sSeperatedCMD[0] == "edit")
+            {
+                editor.FileTest();
             }
             else
             {

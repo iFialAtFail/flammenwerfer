@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Flammenwerfer
 {
-    class XML_Creator
+    class XML_Changer
     {
         public void FileTest()
         {

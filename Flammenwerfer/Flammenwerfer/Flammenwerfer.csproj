@@ -49,6 +49,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Query.cs" />
     <Compile Include="XML Creator.cs" />
+    <Compile Include="XML_Changer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
