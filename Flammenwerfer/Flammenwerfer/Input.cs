@@ -13,7 +13,7 @@ namespace Flammenwerfer
         string sRegexParser = "";
         string sParsedInCommand = "";
         string sInputCommand = "";
-        string sCommand = ""
+        string sCommand = "";
         List<string> sSeperatedCMD = new List<string>();
         List<string> sPartiallyParsedCMD = new List<string>();
         XML_Creator creation = new XML_Creator();
@@ -131,7 +131,7 @@ namespace Flammenwerfer
             }
             foreach (Match m in mLNTypeParse)
             {
-                sRegexParser = "ln");
+                sRegexParser = ("ln");
             }
         }
 

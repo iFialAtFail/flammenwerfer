@@ -49,6 +49,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Query.cs" />
+    <Compile Include="Query_FirstName.cs" />
+    <Compile Include="Query_ID.cs" />
+    <Compile Include="Query_LastName.cs" />
     <Compile Include="XML Creator.cs" />
     <Compile Include="XML_Changer.cs" />
   </ItemGroup>
