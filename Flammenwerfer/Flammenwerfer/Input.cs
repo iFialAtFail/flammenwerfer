@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Text.RegularExpressions;
-using System.Diagnostics;
 
 namespace Flammenwerfer
 {
+    #region Input Parsing System
+
     class Input
     {
         #region Variable Declaration
@@ -83,26 +81,26 @@ namespace Flammenwerfer
 
         private void QueryParsing()
         {
-            MatchCollection sSIDTypeParse = Regex.Matches(sSeperatedCMD[1], "(?i)id", RegexOptions.Singleline);
-            MatchCollection sFNTypeParse = Regex.Matches(sSeperatedCMD[1], "(?i)^f.+?n.+|(?i)^fn", RegexOptions.Singleline);
-            MatchCollection sLNTypeParse = Regex.Matches(sSeperatedCMD[1], "(?i)^l.+?n.+|(?i)^ln", RegexOptions.Singleline);
-            RegexMatchTest(sSIDTypeParse, sFNTypeParse, sLNTypeParse);
+            MatchCollection mSIDTypeParse = Regex.Matches(sSeperatedCMD[1], "(?i)id", RegexOptions.Singleline);
+            MatchCollection mFNTypeParse = Regex.Matches(sSeperatedCMD[1], "(?i)^f.+?n.+|(?i)^fn", RegexOptions.Singleline);
+            MatchCollection mLNTypeParse = Regex.Matches(sSeperatedCMD[1], "(?i)^l.+?n.+|(?i)^ln", RegexOptions.Singleline);
+            RegexMatchTest(mSIDTypeParse, mFNTypeParse, mLNTypeParse);
             ParseMerger();
         }
 
-        private void RegexMatchTest(MatchCollection sSIDTypeParse, MatchCollection sFNTypeParse, MatchCollection sLNTypeParse)
+        private void RegexMatchTest(MatchCollection mSIDTypeParse, MatchCollection mFNTypeParse, MatchCollection mLNTypeParse)
         {
-            foreach (Match m in sSIDTypeParse)
+            foreach (Match m in mSIDTypeParse)
             {
                 Console.WriteLine(m);
                 sRegexParser = Convert.ToString(m);
             }
-            foreach (Match m in sFNTypeParse)
+            foreach (Match m in mFNTypeParse)
             {
                 Console.WriteLine(m);
                 sRegexParser = Convert.ToString(m);
             }
-            foreach (Match m in sLNTypeParse)
+            foreach (Match m in mLNTypeParse)
             {
                 Console.WriteLine(m);
                 sRegexParser = Convert.ToString(m);
@@ -116,4 +114,6 @@ namespace Flammenwerfer
 
         #endregion
     }
+
+    #endregion
 }
