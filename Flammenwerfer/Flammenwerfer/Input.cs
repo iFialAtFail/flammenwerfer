@@ -10,15 +10,14 @@ namespace Flammenwerfer
     {
         #region Variable Declaration
 
-        string sRegexParser = "";
-        string sParsedInCommand = "";
-        string sInputCommand = "";
-        string sCommand = "";
-        List<string> sSeperatedCMD = new List<string>();
-        List<string> sPartiallyParsedCMD = new List<string>();
-        XML_Creator creation = new XML_Creator();
-        XML_Changer editor = new XML_Changer();
-        Query query = new Query();
+        string sRegexParser = ""; //Regular Expression Placeholder string
+        string sParsedInCommand = ""; //Parsed string file to hand off for query
+        string sInputCommand = ""; //Input String
+        string sCommand = ""; //Command string to compare
+        List<string> sSeperatedCMD = new List<string>(); // split string 
+        XML_Creator creation = new XML_Creator(); //Callout to XML User Creation
+        XML_Changer editor = new XML_Changer(); //Callout to XML Editing
+        Query query = new Query(); //
 
         #endregion
 
