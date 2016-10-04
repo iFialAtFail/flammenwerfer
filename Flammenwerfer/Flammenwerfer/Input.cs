@@ -11,43 +11,49 @@ namespace Flammenwerfer
     class Input
     {
         #region Variable Declaration
+
+        string sRegexParser = "";
         string sParsedInCommand = "";
         string sInputCommand = "";
         List<string> sSeperatedCMD = new List<string>();
         List<string> sPartiallyParsedCMD = new List<string>();
         XML_Creator creation = new XML_Creator();
         XML_Changer editor = new XML_Changer();
-        //Query query = new Query();
+        Query query = new Query();
+
         #endregion
 
         #region Input Handler
+
         public void InputReader()
         {
+            sSeperatedCMD.Clear();
             Console.WriteLine("ENTER COMMAND: ");
             sInputCommand = Console.ReadLine();
             parser();
         }
+
         private void parser()
         {
-            //sParsedInCommand = sSeperatedCMD[1] + " " + sSeperatedCMD[2];
             string[] stemparray = sInputCommand.Split(' ');
             foreach (string i in stemparray)
             {
                 sSeperatedCMD.Add(i);
             }
-            QueryParsing();
-            Console.ReadKey();
-            //ParseGetSetTest();
+            ParseGetSetTest();
         }
+
         #endregion
 
         #region Cleaning Methods
+
         private void ParseGetSetTest()
         {
             if (sSeperatedCMD[0] == "get")
             {
-
-                //query.StartQuery(sParsedInCommand);
+                QueryParsing();
+                InputReader();
+                query.StartQuery(sParsedInCommand);
             }
             else if (sSeperatedCMD[0] == "set")
             {
@@ -71,27 +77,43 @@ namespace Flammenwerfer
             InputReader();
         }
 
+        #endregion
+
+        #region regex methods
+
         private void QueryParsing()
         {
-            MatchCollection sSIDTypeParse = Regex.Matches(sSeperatedCMD[1], "ID", RegexOptions.Singleline);
-            MatchCollection sFNTypeParse = Regex.Matches(sSeperatedCMD[1], "F.+?N.+", RegexOptions.Singleline);
-            MatchCollection sLNTypeParse = Regex.Matches(sSeperatedCMD[1], "L.+?N.+", RegexOptions.Singleline);
+            MatchCollection sSIDTypeParse = Regex.Matches(sSeperatedCMD[1], "(?i)id", RegexOptions.Singleline);
+            MatchCollection sFNTypeParse = Regex.Matches(sSeperatedCMD[1], "(?i)^f.+?n.+|(?i)^fn", RegexOptions.Singleline);
+            MatchCollection sLNTypeParse = Regex.Matches(sSeperatedCMD[1], "(?i)^l.+?n.+|(?i)^ln", RegexOptions.Singleline);
+            RegexMatchTest(sSIDTypeParse, sFNTypeParse, sLNTypeParse);
+            ParseMerger();
+        }
+
+        private void RegexMatchTest(MatchCollection sSIDTypeParse, MatchCollection sFNTypeParse, MatchCollection sLNTypeParse)
+        {
             foreach (Match m in sSIDTypeParse)
             {
                 Console.WriteLine(m);
+                sRegexParser = Convert.ToString(m);
             }
             foreach (Match m in sFNTypeParse)
             {
                 Console.WriteLine(m);
+                sRegexParser = Convert.ToString(m);
             }
             foreach (Match m in sLNTypeParse)
             {
                 Console.WriteLine(m);
+                sRegexParser = Convert.ToString(m);
             }
-            Console.WriteLine("finished parsing");
-
         }
-        #endregion
 
+        private void ParseMerger()
+        {
+            sParsedInCommand = sRegexParser + " " + sSeperatedCMD[2];
+        }
+
+        #endregion
     }
 }

@@ -11,10 +11,12 @@ namespace Flammenwerfer
 {
     class XML_Creator
     {
+        XmlTextWriter xWriter = new XmlTextWriter("xDoc1.xml", Encoding.UTF8);
+        xWriter.Formatting = Formatting.Indented;
+
         public void FileTest()
         {
-            XmlTextWriter xWriter = new XmlTextWriter("xDoc1.xml", Encoding.UTF8);
-            xWriter.Formatting = Formatting.Indented;
+
             xWriter.WriteStartElement("Students");
             xWriter.WriteStartElement("Student");
             xWriter.WriteStartElement("NAME");
