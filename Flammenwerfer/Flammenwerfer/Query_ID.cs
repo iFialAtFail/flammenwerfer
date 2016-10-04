@@ -17,7 +17,7 @@ namespace Flammenwerfer
 
 
             XmlDocument xmlArchive = new XmlDocument();
-            xmlArchive.Load("C:\\Users\\Nate\\Desktop\\test.xml");//loads the precreated xml doc,this is not final this final destination is used until the proper xml doc is done
+            xmlArchive.Load(XML_Creator.path);//loads the precreated xml doc,takes the path string from the XML_Creator class
             XmlNodeList XNList = xmlArchive.SelectNodes("/Students/ID");
 
 
