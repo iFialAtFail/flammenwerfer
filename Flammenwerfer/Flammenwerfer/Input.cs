@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+using System.Diagnostics;
 
 namespace Flammenwerfer
 {
@@ -11,9 +13,11 @@ namespace Flammenwerfer
         #region Variable Declaration
         string sParsedInCommand = "";
         string sInputCommand = "";
-        string[] sSeperatedCMD = { "", "", "" };
+        List<string> sSeperatedCMD = new List<string>();
+        List<string> sPartiallyParsedCMD = new List<string>();
         XML_Creator creation = new XML_Creator();
         XML_Changer editor = new XML_Changer();
+        //Query query = new Query();
         #endregion
 
         #region Input Handler
@@ -25,9 +29,15 @@ namespace Flammenwerfer
         }
         private void parser()
         {
-            sParsedInCommand = sSeperatedCMD[1] + " " + sSeperatedCMD[2];
-            sSeperatedCMD = sInputCommand.Split(' ');
-            ParseGetSetTest();
+            //sParsedInCommand = sSeperatedCMD[1] + " " + sSeperatedCMD[2];
+            string[] stemparray = sInputCommand.Split(' ');
+            foreach (string i in stemparray)
+            {
+                sSeperatedCMD.Add(i);
+            }
+            QueryParsing();
+            Console.ReadKey();
+            //ParseGetSetTest();
         }
         #endregion
 
@@ -36,7 +46,8 @@ namespace Flammenwerfer
         {
             if (sSeperatedCMD[0] == "get")
             {
-                //SEND TO NATE
+
+                //query.StartQuery(sParsedInCommand);
             }
             else if (sSeperatedCMD[0] == "set")
             {
@@ -58,6 +69,27 @@ namespace Flammenwerfer
             Console.WriteLine("Press any key to continue...");
             Console.ReadLine();
             InputReader();
+        }
+
+        private void QueryParsing()
+        {
+            MatchCollection sSIDTypeParse = Regex.Matches(sSeperatedCMD[1], "ID", RegexOptions.Singleline);
+            MatchCollection sFNTypeParse = Regex.Matches(sSeperatedCMD[1], "F.+?N.+", RegexOptions.Singleline);
+            MatchCollection sLNTypeParse = Regex.Matches(sSeperatedCMD[1], "L.+?N.+", RegexOptions.Singleline);
+            foreach (Match m in sSIDTypeParse)
+            {
+                Console.WriteLine(m);
+            }
+            foreach (Match m in sFNTypeParse)
+            {
+                Console.WriteLine(m);
+            }
+            foreach (Match m in sLNTypeParse)
+            {
+                Console.WriteLine(m);
+            }
+            Console.WriteLine("finished parsing");
+
         }
         #endregion
 
