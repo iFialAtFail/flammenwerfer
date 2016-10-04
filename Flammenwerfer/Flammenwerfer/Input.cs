@@ -13,6 +13,7 @@ namespace Flammenwerfer
         string sRegexParser = "";
         string sParsedInCommand = "";
         string sInputCommand = "";
+        string sCommand = ""
         List<string> sSeperatedCMD = new List<string>();
         List<string> sPartiallyParsedCMD = new List<string>();
         XML_Creator creation = new XML_Creator();
@@ -26,38 +27,43 @@ namespace Flammenwerfer
         public void InputReader()
         {
             sSeperatedCMD.Clear();
+            Console.WriteLine("<action> *(<Search Type> <Search Data>)*");
+            Console.WriteLine("* Only needed if searching");
+            Console.WriteLine();
+            Console.WriteLine();
             Console.WriteLine("ENTER COMMAND: ");
             sInputCommand = Console.ReadLine();
-            parser();
+            InputLayputParser();
+            CommandParser();
+            ParseGetSetTest();
         }
 
-        private void parser()
+        private void InputLayputParser()
         {
             string[] stemparray = sInputCommand.Split(' ');
             foreach (string i in stemparray)
             {
                 sSeperatedCMD.Add(i);
             }
-            ParseGetSetTest();
         }
 
         #endregion
 
-        #region Cleaning Methods
+        #region Testing Methods
 
         private void ParseGetSetTest()
         {
-            if (sSeperatedCMD[0] == "get")
+            if (sCommand == "get")
             {
                 QueryParsing();
                 InputReader();
                 query.StartQuery(sParsedInCommand);
             }
-            else if (sSeperatedCMD[0] == "set")
+            else if (sCommand == "set")
             {
                 creation.FileTest();
             }
-            else if (sSeperatedCMD[0] == "edit")
+            else if (sCommand == "edit")
             {
                 editor.FileTest();
             }
@@ -79,6 +85,31 @@ namespace Flammenwerfer
 
         #region regex methods
 
+        private void CommandParser()
+        {
+            MatchCollection mCommandGet = Regex.Matches(sSeperatedCMD[0], "(?i)g|(?i)p|(?i)r", RegexOptions.Singleline);
+            MatchCollection mCommandSet = Regex.Matches(sSeperatedCMD[0], "(?i)s|(?i)cr|(?i)ad|(?i)n", RegexOptions.Singleline);
+            MatchCollection mCommandEdit = Regex.Matches(sSeperatedCMD[0], "(?i)e|(?i)ch|(?i)al", RegexOptions.Singleline);
+            CommandMatchTest(mCommandGet, mCommandSet, mCommandEdit);
+        }
+
+        private void CommandMatchTest(MatchCollection mCommandGet, MatchCollection mCommandSet, MatchCollection mCommandEdit)
+        {
+            sCommand = "Fail";
+            foreach (Match m in mCommandGet)
+            {
+                sCommand = "get";
+            }
+            foreach (Match m in mCommandSet)
+            {
+                sCommand = "set";
+            }
+            foreach (Match m in mCommandEdit)
+            {
+                sCommand = "edit";
+            }
+        }
+
         private void QueryParsing()
         {
             MatchCollection mSIDTypeParse = Regex.Matches(sSeperatedCMD[1], "(?i)id", RegexOptions.Singleline);
@@ -92,18 +123,15 @@ namespace Flammenwerfer
         {
             foreach (Match m in mSIDTypeParse)
             {
-                Console.WriteLine(m);
-                sRegexParser = Convert.ToString(m);
+                sRegexParser = "sid";
             }
             foreach (Match m in mFNTypeParse)
             {
-                Console.WriteLine(m);
-                sRegexParser = Convert.ToString(m);
+                sRegexParser = "fn";
             }
             foreach (Match m in mLNTypeParse)
             {
-                Console.WriteLine(m);
-                sRegexParser = Convert.ToString(m);
+                sRegexParser = "ln");
             }
         }
 
