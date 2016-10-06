@@ -46,16 +46,18 @@ namespace Flammenwerfer
 
             if (bStudentFound == true)
             {
-                for (int i = 0; i < 7; i++)//this is here for testing purposes
+                /*for (int i = 0; i < 7; i++)//this is here for testing purposes
                 {
                     Console.WriteLine(sFoundStudent[i]);
                 }
-                Console.ReadKey();//this would normaly activate the final set of classes
+                Console.ReadKey();//this would normaly activate the final set of classes*/
             }
             else
             {
                 Console.WriteLine("Search Failed");
                 Console.ReadKey();
+                                CommandInput input = new CommandInput();
+                input.InputReader();
             }
 
 
