@@ -6,11 +6,11 @@ namespace Flammenwerfer
 {
     #region Input Parsing System
 
-    class Input
+    class CommandInput
     {
         #region Variable Declaration
-
-        string sRegexParser = ""; //Regular Expression Placeholder string
+        /**/
+        string sRegexParser; //Regular Expression Placeholder string
         string sParsedInCommand = ""; //Parsed string file to hand off for query
         string sInputCommand = ""; //Input String
         string sCommand = ""; //Command string to compare

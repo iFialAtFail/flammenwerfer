@@ -13,7 +13,7 @@ namespace Flammenwerfer
 
         #region variable declaration
 
-        Input start = new Input();
+        Program start = new Program();
         XML_Path path = new XML_Path();
         XML_FILE_MISSING nofile = new XML_FILE_MISSING();
         XML_Add_User yesfile = new XML_Add_User();
@@ -99,7 +99,7 @@ namespace Flammenwerfer
         {
             if (sMainMenuParsed == "y")
             {
-                start.InputReader();
+                start.Restart_Point();
             }
             else
             {

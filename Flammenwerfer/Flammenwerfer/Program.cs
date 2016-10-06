@@ -10,7 +10,12 @@ namespace Flammenwerfer
     {
         static void Main(string[] args)
         {
-            Input input = new Input();
+            CommandInput input = new CommandInput();
+            input.InputReader();
+        }
+        public void Restart_Point()
+        {
+            CommandInput input = new CommandInput();
             input.InputReader();
         }
     }
