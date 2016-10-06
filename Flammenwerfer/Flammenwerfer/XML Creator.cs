@@ -10,17 +10,9 @@ namespace Flammenwerfer
 
     class XML_Creator
     {
-
-        #region variable declaration
-
-        Program start = new Program();
-        XML_Path path = new XML_Path();
+        XMLPATH path = new XMLPATH();
         XML_FILE_MISSING nofile = new XML_FILE_MISSING();
         XML_Add_User yesfile = new XML_Add_User();
-        string sAnotherUserParser = "";
-        string sAnotherUserParsed = "";
-        string sMainMenuParser = "";
-        string sMainMenuParsed = "";
 
         #endregion
 
@@ -28,12 +20,18 @@ namespace Flammenwerfer
 
         public void FileTest()
         {
-            if (File.Exists(path.XMLPath))
+            Console.WriteLine("Testing if file exists");
+            Console.ReadKey();
+            if (File.Exists(path.Path))
             {
+                Console.WriteLine("file exists");
+                Console.ReadKey();
                 yesfile.instantiator();
             }
             else
             {
+                Console.WriteLine("file doesn't exist");
+                Console.ReadKey();
                 nofile.createfile();
             }
 
@@ -43,71 +41,7 @@ namespace Flammenwerfer
 
         #region New User/Main Menu/Exit Prompts
 
-        public void ReturnPrompt()
-        {
-            Console.WriteLine("Would you like to create another user?");
-            sAnotherUserParser = Console.ReadLine();
-            RegexAnotherUserParser();
-            AnotherUserParsedTest();
-        }
-
-        private void MainMenuPrompt()
-        {
-            Console.WriteLine("Would you like to return to Menu Input?");
-            sMainMenuParser = Console.ReadLine();
-            RegexMainMenuParser();
-            MainMenuParsedTest();
-        }
-
-        #region Regex Methods
-
-        private void RegexMainMenuParser()
-        {
-            MatchCollection mMainMenuParsed = Regex.Matches(sMainMenuParser, "(?i)y", RegexOptions.Singleline);
-            foreach (Match m in mMainMenuParsed)
-            {
-                Console.WriteLine(m);
-                sMainMenuParsed = Convert.ToString(m);
-            }
-        }
-
-        private void RegexAnotherUserParser()
-        {
-            MatchCollection mAnotherUserParsed = Regex.Matches(sAnotherUserParser, "(?i)y", RegexOptions.Singleline);
-            foreach (Match m in mAnotherUserParsed)
-            {
-                Console.WriteLine(m);
-                sAnotherUserParsed = Convert.ToString(m);
-            }
-        }
-
-        #endregion
-
-        private void AnotherUserParsedTest()
-        {
-            if (sAnotherUserParsed == "y")
-            {
-                FileTest();
-            }
-            else
-            {
-                MainMenuPrompt();
-            }
-        }
-
-        private void MainMenuParsedTest()
-        {
-            if (sMainMenuParsed == "y")
-            {
-                start.Restart_Point();
-            }
-            else
-            {
-                Exit();
-            }
-        }
-
-        private static void Exit()
+        public static void Exit()
         {
             Console.WriteLine("Please press key to close program");
             Console.ReadKey();
@@ -117,16 +51,14 @@ namespace Flammenwerfer
         #endregion
     }
 
-    #endregion
-
     #region File Already Exists
 
     class XML_Add_User
     {
 
         #region variable declaration
-
-        XML_Path path = new XML_Path();
+        XML_Creator create = new XML_Creator();
+        XMLPATH path = new XMLPATH();
         string sFName = "";
         string sLName = "";
         string sSID = "";
@@ -143,7 +75,7 @@ namespace Flammenwerfer
         public void instantiator()
         {
             XmlDocument xDoc = new XmlDocument();
-            xDoc.Load(path.XMLPath);
+            xDoc.Load(path.Path);
             CreateUser(xDoc);
         }
 
@@ -161,7 +93,8 @@ namespace Flammenwerfer
             CourseGradeNode(xDoc, xStudent);
             //End Node Filler Writer
             xDoc.DocumentElement.AppendChild(xStudent);
-            xDoc.Save(path.XMLPath);
+            xDoc.Save(path.Path);
+            
         }
 
         #endregion
@@ -253,7 +186,7 @@ namespace Flammenwerfer
 
         #region variable declaration
 
-        XML_Path path = new XML_Path();
+        XMLPATH path = new XMLPATH();
         string sFName = "";
         string sLName = "";
         string sSID = "";
@@ -269,9 +202,16 @@ namespace Flammenwerfer
 
         public void createfile()
         {
-            XmlTextWriter xWriter = new XmlTextWriter(path.XMLPath, Encoding.UTF8);
+            FileAndDirectoryMaker();
+            XmlTextWriter xWriter = new XmlTextWriter(path.Path, Encoding.UTF8);
             xWriter.Formatting = Formatting.Indented;
             NodeWriter(xWriter);
+        }
+        public string XMLDirPath = "../Student Data/";
+        private void FileAndDirectoryMaker()
+        {
+            Directory.CreateDirectory(XMLDirPath);
+            File.Create(path.Path);
         }
 
         #endregion
@@ -374,15 +314,6 @@ namespace Flammenwerfer
         }
 
         #endregion
-    }
-
-    #endregion
-
-    #region public file path
-
-    class XML_Path
-    {
-        public string XMLPath = "\\Student Data\\Data.xml";
     }
 
     #endregion

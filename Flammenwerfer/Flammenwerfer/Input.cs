@@ -52,24 +52,34 @@ namespace Flammenwerfer
 
         private void ParseGetSetTest()
         {
+            Console.WriteLine("testing for command");
+            Console.ReadKey();
             if (sCommand == "get")
             {
+                Console.WriteLine("going to search system");
+                Console.ReadLine();
                 QueryParsing();
                 InputReader();
                 query.StartQuery(sParsedInCommand);
             }
-            else if (sCommand == "set")
+            if (sCommand == "set")
             {
+                Console.WriteLine("Going to User Creation");
+                Console.ReadLine();
                 creation.FileTest();
             }
-            else if (sCommand == "edit")
+            if (sCommand == "edit")
             {
+                Console.WriteLine("going to user editor");
                 editor.FileTest();
             }
-            else
+            if (sCommand != "get" || sCommand != "set" || sCommand != "edit")
             {
+                Console.WriteLine("failed");
+                Console.ReadKey();
                 ResetWrongValue();
             }
+
         }
 
         private void ResetWrongValue()
@@ -86,9 +96,9 @@ namespace Flammenwerfer
 
         private void CommandParser()
         {
-            MatchCollection mCommandGet = Regex.Matches(sSeperatedCMD[0], "(?i)g|(?i)p|(?i)r", RegexOptions.Singleline);
-            MatchCollection mCommandSet = Regex.Matches(sSeperatedCMD[0], "(?i)s|(?i)cr|(?i)ad|(?i)n", RegexOptions.Singleline);
-            MatchCollection mCommandEdit = Regex.Matches(sSeperatedCMD[0], "(?i)e|(?i)ch|(?i)al", RegexOptions.Singleline);
+            MatchCollection mCommandGet = Regex.Matches(sSeperatedCMD[0], "(?i)get|(?i)p|(?i)r", RegexOptions.Singleline);
+            MatchCollection mCommandSet = Regex.Matches(sSeperatedCMD[0], "(?i)set|(?i)cr|(?i)add", RegexOptions.Singleline);
+            MatchCollection mCommandEdit = Regex.Matches(sSeperatedCMD[0], "(?i)edit|(?i)ch|(?i)al", RegexOptions.Singleline);
             CommandMatchTest(mCommandGet, mCommandSet, mCommandEdit);
         }
 
