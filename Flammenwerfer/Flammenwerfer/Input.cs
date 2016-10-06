@@ -103,7 +103,7 @@ namespace Flammenwerfer
 
         private void CommandParser()
         {
-            MatchCollection mCommandGet = Regex.Matches(sSeperatedCMD[0], "(?i)get|(?i)p|(?i)r", RegexOptions.Singleline);
+            MatchCollection mCommandGet = Regex.Matches(sSeperatedCMD[0], "(?i)get|(?i)f|(?i)r", RegexOptions.Singleline);
             MatchCollection mCommandSet = Regex.Matches(sSeperatedCMD[0], "(?i)set|(?i)cr|(?i)add", RegexOptions.Singleline);
             MatchCollection mCommandEdit = Regex.Matches(sSeperatedCMD[0], "(?i)edit|(?i)ch|(?i)al", RegexOptions.Singleline);
             CommandMatchTest(mCommandGet, mCommandSet, mCommandEdit);
@@ -129,8 +129,8 @@ namespace Flammenwerfer
         private void QueryParsing()
         {
             MatchCollection mSIDTypeParse = Regex.Matches(sSeperatedCMD[1], "(?i)id", RegexOptions.Singleline);
-            MatchCollection mFNTypeParse = Regex.Matches(sSeperatedCMD[1], "(?i)^f.+?n.+|(?i)^fn", RegexOptions.Singleline);
-            MatchCollection mLNTypeParse = Regex.Matches(sSeperatedCMD[1], "(?i)^l.+?n.+|(?i)^ln", RegexOptions.Singleline);
+            MatchCollection mFNTypeParse = Regex.Matches(sSeperatedCMD[1], "(?i)^f.+?n.+|(?i)^fn|(?i)f", RegexOptions.Singleline);
+            MatchCollection mLNTypeParse = Regex.Matches(sSeperatedCMD[1], "(?i)^l.+?n.+|(?i)^ln|(?i)n", RegexOptions.Singleline);
             RegexMatchTest(mSIDTypeParse, mFNTypeParse, mLNTypeParse);
             ParseMerger();
         }

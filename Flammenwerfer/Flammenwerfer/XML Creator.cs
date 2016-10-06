@@ -60,13 +60,12 @@ namespace Flammenwerfer
             //End Node Filler Writer
             xDoc.DocumentElement.AppendChild(xStudent);
             xDoc.Save(path);
-            Console.WriteLine("saved");
             Exit();
         }
 
         #endregion
 
-        #region New User/Main Menu/Exit Prompts
+        #region Exit Prompt
 
         public static void Exit()
         {
@@ -93,7 +92,7 @@ namespace Flammenwerfer
             XmlNode xFName = xDoc.CreateElement("FName"); //<FName>
             Console.Write("Student first name: ");
             sFName = Console.ReadLine();
-            xFName.InnerText = sSID; //Input FName data
+            xFName.InnerText = sFName; //Input FName data
             xStudent.AppendChild(xFName); //</FName>
         }
 
@@ -102,7 +101,7 @@ namespace Flammenwerfer
             XmlNode xLName = xDoc.CreateElement("LName"); //<LName>
             Console.Write("Student last name: ");
             sLName = Console.ReadLine();
-            xLName.InnerText = sSID; //Input LName data
+            xLName.InnerText = sLName; //Input LName data
             xStudent.AppendChild(xLName); //</LName>
         }
 
@@ -111,7 +110,7 @@ namespace Flammenwerfer
             XmlNode xCourseID = xDoc.CreateElement("CourseID"); //<CourseID>
             Console.Write("ID of course: ");
             sCourseID = Console.ReadLine();
-            xCourseID.InnerText = sSID; //Input CourseID data
+            xCourseID.InnerText = sCourseID; //Input CourseID data
             xStudent.AppendChild(xCourseID); //</CourseID>
         }
 
@@ -120,7 +119,7 @@ namespace Flammenwerfer
             XmlNode xCourseName = xDoc.CreateElement("CourseName"); //<CourseName>
             Console.Write("Name of course: ");
             sCourseName = Console.ReadLine();
-            xCourseName.InnerText = sSID; //Input CourseName data
+            xCourseName.InnerText = sCourseName; //Input CourseName data
             xStudent.AppendChild(xCourseName); //</CourseName>
         }
 
@@ -129,7 +128,7 @@ namespace Flammenwerfer
             XmlNode xSem = xDoc.CreateElement("Semester"); //<Semester>
             Console.Write("Semester: ");
             sSem = Console.ReadLine();
-            xSem.InnerText = sSID; //Input Semester data
+            xSem.InnerText = sSem; //Input Semester data
             xStudent.AppendChild(xSem); //</Semester>
         }
 
@@ -138,7 +137,7 @@ namespace Flammenwerfer
             XmlNode xCourseType = xDoc.CreateElement("CourseType"); //<CourseType>
             Console.Write("type of course: ");
             sCourseType = Console.ReadLine();
-            xCourseType.InnerText = sSID; //Input CourseType data
+            xCourseType.InnerText = sCourseType; //Input CourseType data
             xStudent.AppendChild(xCourseType); //</CourseType>
         }
 
@@ -147,7 +146,7 @@ namespace Flammenwerfer
             XmlNode xCourseGrade = xDoc.CreateElement("CourseGrade"); //<CourseGrade>
             Console.Write("Grade of course: ");
             sCourseGrade = Console.ReadLine();
-            xCourseGrade.InnerText = sSID; //Input CourseGrade data
+            xCourseGrade.InnerText = sCourseGrade; //Input CourseGrade data
             xStudent.AppendChild(xCourseGrade); //</CourseGrade>
         }
 
