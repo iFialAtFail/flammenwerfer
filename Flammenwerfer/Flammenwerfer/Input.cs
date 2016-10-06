@@ -58,30 +58,22 @@ namespace Flammenwerfer
 
         private void ParseGetSetTest()
         {
-            Console.WriteLine("testing for command");
-            Console.ReadKey();
+            QueryParsing();
             switch (sCommand)
             {
                 case "get":
-                    Console.WriteLine("going to search system");
-                    QueryParsing();
                     query.StartQuery(sParsedInCommand);
                     break;
 
                 case "set":
-                    Console.WriteLine("Going to User Creation");
-                    Console.ReadLine();
                     creation.FileTest();
                     break;
 
                 case "edit":
-                    Console.WriteLine("going to user editor");
                     editor.FileTest();
                     break;
 
                 default:
-                    Console.WriteLine("failed");
-                    Console.ReadKey();
                     ResetWrongValue();
                     break;
             }
@@ -130,7 +122,7 @@ namespace Flammenwerfer
         {
             MatchCollection mSIDTypeParse = Regex.Matches(sSeperatedCMD[1], "(?i)id", RegexOptions.Singleline);
             MatchCollection mFNTypeParse = Regex.Matches(sSeperatedCMD[1], "(?i)^f.+?n.+|(?i)^fn|(?i)f", RegexOptions.Singleline);
-            MatchCollection mLNTypeParse = Regex.Matches(sSeperatedCMD[1], "(?i)^l.+?n.+|(?i)^ln|(?i)n", RegexOptions.Singleline);
+            MatchCollection mLNTypeParse = Regex.Matches(sSeperatedCMD[1], "(?i)^l.+?n.+|(?i)^ln|(?i)l", RegexOptions.Singleline);
             RegexMatchTest(mSIDTypeParse, mFNTypeParse, mLNTypeParse);
             ParseMerger();
         }
@@ -154,6 +146,7 @@ namespace Flammenwerfer
         private void ParseMerger()
         {
             sParsedInCommand = sRegexParser + " " + sSeperatedCMD[2];
+            Console.WriteLine(sParsedInCommand);
         }
 
         #endregion
