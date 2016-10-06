@@ -59,7 +59,7 @@ namespace Flammenwerfer
                 Console.WriteLine("going to search system");
                 Console.ReadLine();
                 QueryParsing();
-                InputReader();
+                //InputReader();
                 query.StartQuery(sParsedInCommand);
             }
             if (sCommand == "set")
