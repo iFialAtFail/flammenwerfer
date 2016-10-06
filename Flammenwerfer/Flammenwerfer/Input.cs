@@ -50,6 +50,14 @@ namespace Flammenwerfer
                 }
                 errorfixcounter++;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                sSeperatedCMD.Add("");
+                if (sSeperatedCMD[errorfixcounter] == "")
+                {
+                    sSeperatedCMD[errorfixcounter] = "NULL";
+                }
+            }
         }
 
         #endregion
@@ -78,8 +86,6 @@ namespace Flammenwerfer
                     break;
             }
         }
-
-
 
         private void ResetWrongValue()
         {
