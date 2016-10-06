@@ -13,10 +13,16 @@ namespace Flammenwerfer
             CommandInput input = new CommandInput();
             input.InputReader();
         }
+
         public void Restart_Point()
         {
             CommandInput input = new CommandInput();
             input.InputReader();
         }
+    }
+
+    class XMLPATH
+    {
+        public string Path = "../../UserData.xml";
     }
 }
