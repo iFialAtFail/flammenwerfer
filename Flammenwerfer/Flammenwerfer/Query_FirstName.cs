@@ -20,7 +20,7 @@ namespace Flammenwerfer
             XMLPATH path = new XMLPATH();
             string spath = path.Path;
             xmlArchive.Load(spath);//loads the precreated xml doc,takes the path string found in the XML_Creator class
-            XmlNodeList XNList = xmlArchive.SelectNodes("/Students/ID");
+            XmlNodeList XNList = xmlArchive.SelectNodes("/Students/Student");
 
 
             foreach (XmlNode Node in XNList)
