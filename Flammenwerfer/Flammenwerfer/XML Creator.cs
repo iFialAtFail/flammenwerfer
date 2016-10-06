@@ -16,18 +16,6 @@ namespace Flammenwerfer
         {
             useraddition.instantiator();
         }
-
-
-        #region New User/Main Menu/Exit Prompts
-
-        public static void Exit()
-        {
-            Console.WriteLine("Please press key to close program");
-            Console.ReadKey();
-            Environment.Exit(0);
-        }
-
-        #endregion
     }
 
     #region File Already Exists
@@ -72,7 +60,19 @@ namespace Flammenwerfer
             //End Node Filler Writer
             xDoc.DocumentElement.AppendChild(xStudent);
             xDoc.Save(path);
-            
+            Console.WriteLine("saved");
+            Exit();
+        }
+
+        #endregion
+
+        #region New User/Main Menu/Exit Prompts
+
+        public static void Exit()
+        {
+            Console.WriteLine("Please press key to close program");
+            Console.ReadKey();
+            Environment.Exit(0);
         }
 
         #endregion

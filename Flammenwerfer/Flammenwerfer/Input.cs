@@ -39,10 +39,16 @@ namespace Flammenwerfer
 
         private void InputLayputParser()
         {
+            int errorfixcounter = 0;
             string[] stemparray = sInputCommand.Split(' ');
             foreach (string i in stemparray)
             {
                 sSeperatedCMD.Add(i);
+                if (sSeperatedCMD[errorfixcounter] == "")
+                {
+                    sSeperatedCMD[errorfixcounter] = "NULL";
+                }
+                errorfixcounter++;
             }
         }
 
@@ -54,33 +60,34 @@ namespace Flammenwerfer
         {
             Console.WriteLine("testing for command");
             Console.ReadKey();
-            if (sCommand == "get")
+            switch (sCommand)
             {
-                Console.WriteLine("going to search system");
-                Console.ReadLine();
-                QueryParsing();
-                //InputReader();
-                query.StartQuery(sParsedInCommand);
-            }
-            if (sCommand == "set")
-            {
-                Console.WriteLine("Going to User Creation");
-                Console.ReadLine();
-                creation.FileTest();
-            }
-            if (sCommand == "edit")
-            {
-                Console.WriteLine("going to user editor");
-                editor.FileTest();
-            }
-            if (sCommand != "get" || sCommand != "set" || sCommand != "edit")
-            {
-                Console.WriteLine("failed");
-                Console.ReadKey();
-                ResetWrongValue();
-            }
+                case "get":
+                    Console.WriteLine("going to search system");
+                    QueryParsing();
+                    query.StartQuery(sParsedInCommand);
+                    break;
 
+                case "set":
+                    Console.WriteLine("Going to User Creation");
+                    Console.ReadLine();
+                    creation.FileTest();
+                    break;
+
+                case "edit":
+                    Console.WriteLine("going to user editor");
+                    editor.FileTest();
+                    break;
+
+                default:
+                    Console.WriteLine("failed");
+                    Console.ReadKey();
+                    ResetWrongValue();
+                    break;
+            }
         }
+
+
 
         private void ResetWrongValue()
         {
@@ -151,6 +158,7 @@ namespace Flammenwerfer
 
         #endregion
     }
+}
 
     #endregion
-}
+
