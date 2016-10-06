@@ -56,6 +56,7 @@ namespace Flammenwerfer
             {
                 Console.WriteLine("Search Failed");
                 Console.ReadKey();
+                Console.Clear();
                 CommandInput input = new CommandInput();
                 input.InputReader();
             }
