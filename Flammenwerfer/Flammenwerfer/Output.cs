@@ -49,5 +49,19 @@ namespace Flammenwerfer
             Console.ReadLine();
         }
         
+        //dump any text output to console and return next command
+        public String ReadInfoDisplay(String sInString)
+        {
+            Console.WriteLine(sInString);
+            return Console.ReadLine();
+        }
+
+        //dump any text output to console
+        public void DumbInfoDisplay(String sInString)
+        {
+            Console.WriteLine(sInString);
+            Console.ReadLine();
+        }
+
     }
 }
