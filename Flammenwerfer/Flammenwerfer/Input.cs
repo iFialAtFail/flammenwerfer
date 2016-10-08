@@ -27,6 +27,7 @@ namespace Flammenwerfer
 
         public void InputReader()
         { //Entry point of Input, sets up logic structure of input system
+            Console.Clear();
             sSeperatedCMD.Clear(); //ensures command entry is cleared out before new commands are entered
             sInputCommand = display.ReadInfoDisplay("<action> *(<Search Type> <Search Data>)* \n *Only needed if searching \n \n ENTER COMMAND: "); //takes in command to match prompt
             InputLayoutParser(); //Parses the layout text for passthrough to the query

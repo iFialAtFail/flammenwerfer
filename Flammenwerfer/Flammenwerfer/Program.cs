@@ -10,6 +10,7 @@ namespace Flammenwerfer
     {
         static void Main(string[] args)
         {
+            Console.Clear();
             CommandInput input = new CommandInput();
             input.InputReader();
         }

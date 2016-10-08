@@ -18,6 +18,7 @@ namespace Flammenwerfer
 
         public void instantiator()
         { //entry point of User Creation logic for XML
+            Console.Clear();
             path = pathfilelocation.Path;
             XmlDocument xDoc = new XmlDocument();
             xDoc.Load(path);
