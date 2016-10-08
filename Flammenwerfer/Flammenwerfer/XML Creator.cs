@@ -1,52 +1,31 @@
 ﻿using System;
-using System.Text;
 using System.Xml;
-using System.IO;
-using System.Text.RegularExpressions;
 
 namespace Flammenwerfer
 {
 
     class XML_Creator
     {
-
-        XML_Add_User useraddition = new XML_Add_User();
-        
-        public void FileTest()
-        {
-            useraddition.instantiator();
-        }
-    }
-
-    #region File Already Exists
-
-    class XML_Add_User
-    {
-
         #region variable declaration
-        string path = "../../UserData.xml";
-        string sFName = "";
-        string sLName = "";
-        string sSID = "";
-        string sCourseID = "";
-        string sCourseName = "";
-        string sSem = "";
-        string sCourseType = "";
-        string sCourseGrade = "";
+
+        Output displayer = new Output();
+        XMLPATH pathfilelocation = new XMLPATH();
+        string path = "";
 
         #endregion
-
+            /*Logic for creating user from prompts requested*/
         #region Start User Creation
 
         public void instantiator()
-        {
+        { //entry point of User Creation logic for XML
+            path = pathfilelocation.Path;
             XmlDocument xDoc = new XmlDocument();
             xDoc.Load(path);
             CreateUser(xDoc);
         }
 
         public void CreateUser(XmlDocument xDoc)
-        {
+        { //user creation logic
             XmlNode xStudent = xDoc.CreateElement("Student");
             // Start Node Filler Writer
             StudentIDNode(xDoc, xStudent);
@@ -64,96 +43,76 @@ namespace Flammenwerfer
         }
 
         #endregion
-
+         /*logic for leaving program when user finishes user creation*/
         #region Exit Prompt
 
-        public static void Exit()
-        {
-            Console.WriteLine("Please press key to close program");
+        public void Exit()
+        {// when user is created, exit program
+            displayer.DumbInfoDisplay("Please press any key to close program");
             Console.ReadKey();
             Environment.Exit(0);
         }
 
         #endregion
-
+            /*XML node filling logic*/
         #region Node Writer FIller
-
+        //prompts and writes information about student and classes taken to XML file
         private void StudentIDNode(XmlDocument xDoc, XmlNode xStudent)
         {
             XmlNode xSID = xDoc.CreateElement("SID"); //<SID>
-            Console.Write("Student ID number: ");
-            sSID = Console.ReadLine();
-            xSID.InnerText = sSID; //Input SID data
+            xSID.InnerText = displayer.ReadInfoDisplay("Student ID number: "); //Input SID data
             xStudent.AppendChild(xSID); //</SID>
         }
 
         private void StudentFNNode(XmlDocument xDoc, XmlNode xStudent)
         {
             XmlNode xFName = xDoc.CreateElement("FName"); //<FName>
-            Console.Write("Student first name: ");
-            sFName = Console.ReadLine();
-            xFName.InnerText = sFName; //Input FName data
+            xFName.InnerText = displayer.ReadInfoDisplay("Student first name: "); //Input FName data
             xStudent.AppendChild(xFName); //</FName>
         }
 
         private void StudentLNNode(XmlDocument xDoc, XmlNode xStudent)
         {
             XmlNode xLName = xDoc.CreateElement("LName"); //<LName>
-            Console.Write("Student last name: ");
-            sLName = Console.ReadLine();
-            xLName.InnerText = sLName; //Input LName data
+            xLName.InnerText = displayer.ReadInfoDisplay("Student last name: "); //Input LName data
             xStudent.AppendChild(xLName); //</LName>
         }
 
         private void CourseIDNode(XmlDocument xDoc, XmlNode xStudent)
         {
             XmlNode xCourseID = xDoc.CreateElement("CourseID"); //<CourseID>
-            Console.Write("ID of course: ");
-            sCourseID = Console.ReadLine();
-            xCourseID.InnerText = sCourseID; //Input CourseID data
+            xCourseID.InnerText = displayer.ReadInfoDisplay("ID of course: "); //Input CourseID data
             xStudent.AppendChild(xCourseID); //</CourseID>
         }
 
         private void CourseNameNode(XmlDocument xDoc, XmlNode xStudent)
         {
             XmlNode xCourseName = xDoc.CreateElement("CourseName"); //<CourseName>
-            Console.Write("Name of course: ");
-            sCourseName = Console.ReadLine();
-            xCourseName.InnerText = sCourseName; //Input CourseName data
+            xCourseName.InnerText = displayer.ReadInfoDisplay("Name of course: "); //Input CourseName data
             xStudent.AppendChild(xCourseName); //</CourseName>
         }
 
         private void SemesterNode(XmlDocument xDoc, XmlNode xStudent)
         {
             XmlNode xSem = xDoc.CreateElement("Semester"); //<Semester>
-            Console.Write("Semester: ");
-            sSem = Console.ReadLine();
-            xSem.InnerText = sSem; //Input Semester data
+            xSem.InnerText = displayer.ReadInfoDisplay("Semester: "); //Input Semester data
             xStudent.AppendChild(xSem); //</Semester>
         }
 
         private void CourseTypeNode(XmlDocument xDoc, XmlNode xStudent)
         {
             XmlNode xCourseType = xDoc.CreateElement("CourseType"); //<CourseType>
-            Console.Write("type of course: ");
-            sCourseType = Console.ReadLine();
-            xCourseType.InnerText = sCourseType; //Input CourseType data
+            xCourseType.InnerText = displayer.ReadInfoDisplay("type of course: "); //Input CourseType data
             xStudent.AppendChild(xCourseType); //</CourseType>
         }
 
         private void CourseGradeNode(XmlDocument xDoc, XmlNode xStudent)
         {
             XmlNode xCourseGrade = xDoc.CreateElement("CourseGrade"); //<CourseGrade>
-            Console.Write("Grade of course: ");
-            sCourseGrade = Console.ReadLine();
-            xCourseGrade.InnerText = sCourseGrade; //Input CourseGrade data
+            xCourseGrade.InnerText = displayer.ReadInfoDisplay("Grade of course: "); //Input CourseGrade data
             xStudent.AppendChild(xCourseGrade); //</CourseGrade>
         }
 
         #endregion
-
     }
-
-    #endregion
-
 }
