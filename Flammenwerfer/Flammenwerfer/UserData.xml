@@ -3,30 +3,49 @@
     <SID>789</SID>
     <FName>John</FName>
     <LName>Smith</LName>
-    <CourseID>1234</CourseID>
-    <CourseName>coursename</CourseName>
-    <Semester>Fall</Semester>
-    <CourseType>Core</CourseType>
-    <CourseGrade>B</CourseGrade>
+    <Courses>
+      <Course>
+        <CourseID>1234</CourseID>
+        <CourseName>coursename</CourseName>
+        <CourseType>Core</CourseType>
+        <CourseGrade>B</CourseGrade>
+        <Semester>Fall</Semester>
+      </Course>
+    </Courses>
   </Student>
   <Student>
-    <SID>789</SID>
-    <FName>James</FName>
+    <SID>755</SID>
+    <FName>Jake</FName>
     <LName>Johnson</LName>
-    <CourseID>4321</CourseID>
-    <CourseName>NameDeCourse</CourseName>
-    <Semester>Spring</Semester>
-    <CourseType>General</CourseType>
-    <CourseGrade>A</CourseGrade>
+    <Courses>
+      <Course>
+        <CourseID>1234</CourseID>
+        <CourseName>coursename</CourseName>
+        <CourseType>Core</CourseType>
+        <CourseGrade>B</CourseGrade>
+        <Semester>Fall</Semester>
+      </Course>
+    </Courses>
   </Student>
   <Student>
-    <SID>578</SID>
-    <FName>Dicks</FName>
-    <LName>McGee</LName>
-    <CourseID>58008</CourseID>
-    <CourseName>look at code upside down</CourseName>
-    <Semester>fall</Semester>
-    <CourseType>meme</CourseType>
-    <CourseGrade>Doge</CourseGrade>
+    <SID>557</SID>
+    <FName>Samantha</FName>
+    <LName>Robertson</LName>
+    <Courses>
+      <Course>
+        <CourseID>8875</CourseID>
+        <CourseName>Basic Alchemy</CourseName>
+        <CourseType>Core</CourseType>
+        <CourseGrade>D</CourseGrade>
+        <Semester>Fall</Semester>
+      </Course>
+      <Course>
+        <CourseID>1557</CourseID>
+        <CourseName>Advanced Blood Magic</CourseName>
+        <CourseType>Satanic</CourseType>
+        <CourseGrade>A+</CourseGrade>
+        <Semester>Fall</Semester>
+      </Course>
+    </Courses>
   </Student>
 </Students>
