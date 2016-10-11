@@ -5,11 +5,24 @@
     <LName>Smith</LName>
     <Courses>
       <Course>
-        <CourseID>1234</CourseID>
-        <CourseName>coursename</CourseName>
-        <CourseType>Core</CourseType>
-        <CourseGrade>B</CourseGrade>
+        <CourseID>8763</CourseID>
+        <CourseNumber>MA-230</CourseNumber>
+        <CourseName>Calculus 2</CourseName>
+        <Credits>5</Credits>
+        <CourseYear>2016</CourseYear>
+        <Semester>spring</Semester>
+        <CourseType>general education</CourseType>
+        <CourseGrade>C-</CourseGrade>
+      </Course>
+      <Course>
+        <CourseID>6548</CourseID>
+        <CourseNumber>EN-315</CourseNumber>
+        <CourseName>Advanced English Composition</CourseName>
+        <Credits>3</Credits>
+        <CourseYear>2015</CourseYear>
         <Semester>Fall</Semester>
+        <CourseType>General Education</CourseType>
+        <CourseGrade>D+</CourseGrade>
       </Course>
     </Courses>
   </Student>
@@ -19,11 +32,24 @@
     <LName>Johnson</LName>
     <Courses>
       <Course>
-        <CourseID>1234</CourseID>
-        <CourseName>coursename</CourseName>
-        <CourseType>Core</CourseType>
-        <CourseGrade>B</CourseGrade>
+        <CourseID>1689</CourseID>
+        <CourseNumber>ALC-120</CourseNumber>
+        <CourseName>Basic Alchemy</CourseName>
+        <Credits>8</Credits>
+        <CourseYear>2016</CourseYear>
         <Semester>Fall</Semester>
+        <CourseType>Core</CourseType>
+        <CourseGrade>B-</CourseGrade>
+      </Course>
+      <Course>
+        <CourseID>6548</CourseID>
+        <CourseNumber>EN-315</CourseNumber>
+        <CourseName>Advanced English Composition</CourseName>
+        <Credits>3</Credits>
+        <CourseYear>2015</CourseYear>
+        <Semester>Fall</Semester>
+        <CourseType>General Education</CourseType>
+        <CourseGrade>D+</CourseGrade>
       </Course>
     </Courses>
   </Student>
@@ -33,18 +59,24 @@
     <LName>Robertson</LName>
     <Courses>
       <Course>
-        <CourseID>8875</CourseID>
+        <CourseID>1689</CourseID>
+        <CourseNumber>ALC-120</CourseNumber>
         <CourseName>Basic Alchemy</CourseName>
-        <CourseType>Core</CourseType>
-        <CourseGrade>D</CourseGrade>
+        <Credits>8</Credits>
+        <CourseYear>2016</CourseYear>
         <Semester>Fall</Semester>
+        <CourseType>Core</CourseType>
+        <CourseGrade>B-</CourseGrade>
       </Course>
       <Course>
         <CourseID>1557</CourseID>
+        <CourseNumber>DBM-315</CourseNumber>
         <CourseName>Advanced Blood Magic</CourseName>
-        <CourseType>Satanic</CourseType>
-        <CourseGrade>A+</CourseGrade>
+        <Credits>6</Credits>
+        <CourseYear>2016</CourseYear>
         <Semester>Fall</Semester>
+        <CourseType>General Education</CourseType>
+        <CourseGrade>A+</CourseGrade>
       </Course>
     </Courses>
   </Student>

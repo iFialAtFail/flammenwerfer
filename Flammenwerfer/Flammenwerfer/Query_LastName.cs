@@ -48,14 +48,10 @@ namespace Flammenwerfer
                             lFoundStudent.Add(xNode["CourseGrade"].InnerText);
                         }
                         lFoundStudent.Add(xNode["CourseGrade"].InnerText);
-                        }
-                        lFoundStudent[0] = Convert.ToString(iCourseCounter);
                     }
+                    lFoundStudent[0] = Convert.ToString(iCourseCounter);
                 }
             }
-
-
-
             if (bStudentFound == true)
             {
                 Output Displayer = new Output();
@@ -72,3 +68,7 @@ namespace Flammenwerfer
         }
     }
 }
+
+
+
+

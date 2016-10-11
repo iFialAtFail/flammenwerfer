@@ -53,9 +53,6 @@ namespace Flammenwerfer
                     }
                 }
             }
-
-
-
             if (bStudentFound == true)
             {
                 Output Displayer = new Output();
