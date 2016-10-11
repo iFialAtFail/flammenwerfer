@@ -45,7 +45,6 @@ namespace Flammenwerfer
             {
                 case "get": //if 'get' command is matched, go to query system
                     QueryParsing(); //Parses the query command and paramater into the passthrough string
-                    Console.WriteLine(sParsedInCommand);
                     query.StartQuery(sParsedInCommand);
                     break;
 
