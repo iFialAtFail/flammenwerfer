@@ -9,7 +9,7 @@
         <CourseNumber>MA-230</CourseNumber>
         <CourseName>Calculus 2</CourseName>
         <Credits>5</Credits>
-        <CourseYear>2016</CourseYear>
+        <Year>2016</Year>
         <Semester>spring</Semester>
         <CourseType>general education</CourseType>
         <CourseGrade>C-</CourseGrade>
@@ -19,7 +19,7 @@
         <CourseNumber>EN-315</CourseNumber>
         <CourseName>Advanced English Composition</CourseName>
         <Credits>3</Credits>
-        <CourseYear>2015</CourseYear>
+        <Year>2015</Year>
         <Semester>Fall</Semester>
         <CourseType>General Education</CourseType>
         <CourseGrade>D+</CourseGrade>
@@ -36,7 +36,7 @@
         <CourseNumber>ALC-120</CourseNumber>
         <CourseName>Basic Alchemy</CourseName>
         <Credits>8</Credits>
-        <CourseYear>2016</CourseYear>
+        <Year>2016</Year>
         <Semester>Fall</Semester>
         <CourseType>Core</CourseType>
         <CourseGrade>B-</CourseGrade>
@@ -46,7 +46,7 @@
         <CourseNumber>EN-315</CourseNumber>
         <CourseName>Advanced English Composition</CourseName>
         <Credits>3</Credits>
-        <CourseYear>2015</CourseYear>
+        <Year>2015</Year>
         <Semester>Fall</Semester>
         <CourseType>General Education</CourseType>
         <CourseGrade>D+</CourseGrade>
@@ -63,7 +63,7 @@
         <CourseNumber>ALC-120</CourseNumber>
         <CourseName>Basic Alchemy</CourseName>
         <Credits>8</Credits>
-        <CourseYear>2016</CourseYear>
+        <Year>2016</Year>
         <Semester>Fall</Semester>
         <CourseType>Core</CourseType>
         <CourseGrade>B-</CourseGrade>
@@ -73,7 +73,7 @@
         <CourseNumber>DBM-315</CourseNumber>
         <CourseName>Advanced Blood Magic</CourseName>
         <Credits>6</Credits>
-        <CourseYear>2016</CourseYear>
+        <Year>2016</Year>
         <Semester>Fall</Semester>
         <CourseType>General Education</CourseType>
         <CourseGrade>A+</CourseGrade>

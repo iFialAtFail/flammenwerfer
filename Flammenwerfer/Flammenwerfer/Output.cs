@@ -39,13 +39,24 @@ namespace Flammenwerfer
         //display student info from arbitrary array input
         public void InfoDisplay(List<string> sFoundStudent)
         {
-            Console.WriteLine("Student ID: " + sFoundStudent[0]);
-            Console.WriteLine("Student Name: " + sFoundStudent[2] + ", " + sFoundStudent[1]);
-            Console.WriteLine("Course ID: " + sFoundStudent[3]);
-            Console.WriteLine("Course Name: " + sFoundStudent[4]);
-            Console.WriteLine("Semester: " + sFoundStudent[5]);
-            Console.WriteLine("Course Type: " + sFoundStudent[6]);
-            Console.WriteLine("Course Grade: " + sFoundStudent[7]);
+            int iCourseCounter = Convert.ToInt32(sFoundStudent[0]);
+            int iCourseSlot = 4;
+            Console.WriteLine("Student ID: " + sFoundStudent[1]);
+            Console.WriteLine("Student Name: " + sFoundStudent[2] + ", " + sFoundStudent[3]);
+            for (int i = 0; i < iCourseCounter; i++)
+            {
+                Console.WriteLine("Course ID: " + sFoundStudent[iCourseSlot]);
+                iCourseSlot++;
+                Console.WriteLine("Course Name: " + sFoundStudent[iCourseSlot]);
+                iCourseSlot++;
+                Console.WriteLine("Semester: " + sFoundStudent[iCourseSlot]);
+                iCourseSlot++;
+                Console.WriteLine("Course Type: " + sFoundStudent[iCourseSlot]);
+                iCourseSlot++;
+                Console.WriteLine("Course Grade: " + sFoundStudent[iCourseSlot]);
+                iCourseSlot++;
+            }
+
             Console.ReadLine();
         }
         
