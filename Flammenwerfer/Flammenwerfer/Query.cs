@@ -34,10 +34,6 @@ namespace Flammenwerfer
                     Query_LastName LNQ = new Query_LastName();
                     LNQ.SearchLastName(sQueried);
                     break;
-                case "cname":
-                    break;
-                case "cid":
-                    break;
                 default: //If no type was properly selected
                     Console.WriteLine("search paramaters incorrect please see system analyst");
                     Console.ReadKey();
