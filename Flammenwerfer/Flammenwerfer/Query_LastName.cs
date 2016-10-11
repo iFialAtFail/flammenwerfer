@@ -39,10 +39,15 @@ namespace Flammenwerfer
                         {
                             iCourseCounter++;
                             lFoundStudent.Add(xNode["CourseID"].InnerText);
+                            lFoundStudent.Add(xNode["CourseNumber"].InnerText);
                             lFoundStudent.Add(xNode["CourseName"].InnerText);
+                            lFoundStudent.Add(xNode["Credits"].InnerText);
+                            lFoundStudent.Add(xNode["year"].InnerText);
                             lFoundStudent.Add(xNode["Semester"].InnerText);
                             lFoundStudent.Add(xNode["CourseType"].InnerText);
                             lFoundStudent.Add(xNode["CourseGrade"].InnerText);
+                        }
+                        lFoundStudent.Add(xNode["CourseGrade"].InnerText);
                         }
                         lFoundStudent[0] = Convert.ToString(iCourseCounter);
                     }

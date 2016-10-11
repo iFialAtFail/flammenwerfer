@@ -38,8 +38,14 @@ namespace Flammenwerfer
             XmlNode xCourse = xDoc.CreateElement("Course");
             for (int iCurrentCourse = 0; iCurrentCourse < iCourseCounter; iCurrentCourse++)
             {
+                int iReadableCourseNumber = iCurrentCourse++;
+                string sDumbDisplay = "Course Number " + iReadableCourseNumber + ": \n";
+                cDisplayer.DumbInfoDisplay(sDumbDisplay);
                 CourseIDNode(xDoc, xStudent);
+                CourseNumberNode(xDoc, xStudent);
                 CourseNameNode(xDoc, xStudent);
+                CourseCreditsNode(xDoc, xStudent);
+                CourseYearNode(xDoc, xStudent);
                 SemesterNode(xDoc, xStudent);
                 CourseTypeNode(xDoc, xStudent);
                 CourseGradeNode(xDoc, xStudent);
@@ -95,6 +101,13 @@ namespace Flammenwerfer
             xStudent.AppendChild(xCourseID); //</CourseID>
         }
 
+        private void CourseNumberNode(XmlDocument xDoc, XmlNode xStudent)
+        {
+            XmlNode xCourseNumber = xDoc.CreateElement("CourseNumber"); //<CourseID>
+            xCourseNumber.InnerText = cDisplayer.ReadInfoDisplay("Number of course: "); //Input CourseID data
+            xStudent.AppendChild(xCourseNumber); //</CourseID>
+        }
+
         private void CourseNameNode(XmlDocument xDoc, XmlNode xStudent)
         {
             XmlNode xCourseName = xDoc.CreateElement("CourseName"); //<CourseName>
@@ -121,6 +134,19 @@ namespace Flammenwerfer
             XmlNode xCourseGrade = xDoc.CreateElement("CourseGrade"); //<CourseGrade>
             xCourseGrade.InnerText = cDisplayer.ReadInfoDisplay("Grade of course: "); //Input CourseGrade data
             xStudent.AppendChild(xCourseGrade); //</CourseGrade>
+        }
+
+        private void CourseYearNode(XmlDocument xDoc, XmlNode xStudent)
+        {
+            XmlNode xCourseYear = xDoc.CreateElement("CourseYear"); //<CourseGrade>
+            xCourseYear.InnerText = cDisplayer.ReadInfoDisplay("year of course: "); //Input CourseGrade data
+            xStudent.AppendChild(xCourseYear); //</CourseGrade>
+        }
+        private void CourseCreditsNode(XmlDocument xDoc, XmlNode xStudent)
+        {
+            XmlNode xCourseCredits = xDoc.CreateElement("Credits"); //<CourseGrade>
+            xCourseCredits.InnerText = cDisplayer.ReadInfoDisplay("credits of course: "); //Input CourseGrade data
+            xStudent.AppendChild(xCourseCredits); //</CourseGrade>
         }
 
         #endregion

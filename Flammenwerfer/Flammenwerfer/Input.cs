@@ -31,7 +31,6 @@ namespace Flammenwerfer
             sSeperatedCMD.Clear(); //ensures command entry is cleared out before new commands are entered
             sInputCommand = display.ReadInfoDisplay("<action> *(<Search Type> <Search Data>)* \n *Only needed if searching \n \n ENTER COMMAND: "); //takes in command to match prompt
             InputLayoutParser(); //Parses the layout text for passthrough to the query
-            QueryParsing(); //Parses the query command and paramater into the passthrough string
             CommandParser(); //Parses the command into testable logic
             ParseGetSetTest(); //Actual command test logic
         }
@@ -45,6 +44,7 @@ namespace Flammenwerfer
             switch (sCommand)
             {
                 case "get": //if 'get' command is matched, go to query system
+                    QueryParsing(); //Parses the query command and paramater into the passthrough string
                     Console.WriteLine(sParsedInCommand);
                     query.StartQuery(sParsedInCommand);
                     break;
@@ -78,17 +78,14 @@ namespace Flammenwerfer
         private void InputLayoutParser()
         { //Input string partially parsed out to be sorted by other parsing systems
             string[] stemparray = sInputCommand.Split(' ');
+            for (int i = 0; i < 2; i++) {sSeperatedCMD.Add("");}
+            int iTempStringCounter = 0;
             foreach (string i in stemparray)
             {
-                sSeperatedCMD.Add(i);
+                sSeperatedCMD[iTempStringCounter] = i;
+                iTempStringCounter++;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                if (sSeperatedCMD[i] == null)
-                {
-                    sSeperatedCMD.Add("NULL");
-                }
-            }
+
         }
 
         /*Start of action command checking parser*/
