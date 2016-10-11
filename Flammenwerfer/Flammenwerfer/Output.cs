@@ -20,24 +20,24 @@ namespace Flammenwerfer
         public String sYear = "9999";
         public String sCourseType = "General Education";
         public String sCourseGrade = "B";
-        public String[] TestOutput = new String[8];
+        public List<string> TestOutput = new List<string>();
 
         //test output method with embedded dummy info
         public void OutputTest()
         {
-            TestOutput[0] = sStudentID;
-            TestOutput[1] = sFirstName;
-            TestOutput[2] = sLastName;
-            TestOutput[3] = sCourseID;
-            TestOutput[4] = sCourseName;
-            TestOutput[5] = sSemester;
-            TestOutput[6] = sCourseType;
-            TestOutput[7] = sCourseGrade;
+            TestOutput.Add(sStudentID);
+            TestOutput.Add(sFirstName);
+            TestOutput.Add(sLastName);
+            TestOutput.Add(sCourseID);
+            TestOutput.Add(sCourseName);
+            TestOutput.Add(sSemester);
+            TestOutput.Add(sCourseType);
+            TestOutput.Add(sCourseGrade);
             InfoDisplay(TestOutput);
         }
 
         //display student info from arbitrary array input
-        public void InfoDisplay(String[] sFoundStudent)
+        public void InfoDisplay(List<string> sFoundStudent)
         {
             Console.WriteLine("Student ID: " + sFoundStudent[0]);
             Console.WriteLine("Student Name: " + sFoundStudent[2] + ", " + sFoundStudent[1]);

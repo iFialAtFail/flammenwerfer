@@ -11,8 +11,8 @@ namespace Flammenwerfer
     {
         public void SearchFirstName(string sSearchedFName)
         {
-            string[] sFoundStudent = new string[8];//this array will be used to send the found information to the next class
-            string sArchiveFName;//used to hold FirstNames found in the xml file
+            List<string> lFoundStudent = new List<string>();//this array will be used to send the found information to the next class
+            string sArchiveFName = "";//used to hold FirstNames found in the xml file
             bool bStudentFound = false;//will be set to true if student is found
 
 
@@ -21,6 +21,7 @@ namespace Flammenwerfer
             string spath = path.Path;
             xmlArchive.Load(spath);//loads the precreated xml doc,takes the path string found in the XML_Creator class
             XmlNodeList XNList = xmlArchive.SelectNodes("/Students/Student");
+            XmlNodeList XNListCourses = xmlArchive.SelectNodes("/Students/Student/Courses/Course");
 
 
             foreach (XmlNode Node in XNList)
@@ -29,27 +30,30 @@ namespace Flammenwerfer
                 if (sArchiveFName == sSearchedFName)//if the searched name equal and achieved name then sFoundStudent is filled with the the information from the archieve
                 {
                     bStudentFound = true;
-                    sFoundStudent[0] = Node["SID"].InnerText;
-                    sFoundStudent[1] = Node["FName"].InnerText;
-                    sFoundStudent[2] = Node["LName"].InnerText;
-                    sFoundStudent[3] = Node["CourseID"].InnerText;
-                    sFoundStudent[4] = Node["CourseName"].InnerText;
-                    sFoundStudent[5] = Node["Semester"].InnerText;
-                    sFoundStudent[6] = Node["CourseType"].InnerText;
-                    sFoundStudent[7] = Node["CourseGrade"].InnerText;
+                    lFoundStudent.Add(Node["SID"].InnerText);
+                    lFoundStudent.Add(Node["FName"].InnerText);
+                    lFoundStudent.Add(Node["LName"].InnerText);
+                    foreach (XmlNode xNode in XNListCourses)
+                    {
+                        if (sArchiveFName == sSearchedFName)
+                        {
+                            lFoundStudent.Add(xNode["CourseID"].InnerText);
+                            lFoundStudent.Add(xNode["CourseName"].InnerText);
+                            lFoundStudent.Add(xNode["Semester"].InnerText);
+                            lFoundStudent.Add(xNode["CourseType"].InnerText);
+                            lFoundStudent.Add(xNode["CourseGrade"].InnerText);
+                        }
+                    }
                 }
-
             }
+
 
 
 
             if (bStudentFound == true)
             {
-                /*for (int i = 0; i < 7; i++)//this is here for testing purposes
-                {
-                    Console.WriteLine(sFoundStudent[i]);
-                }
-                Console.ReadKey();//this would normaly activate the final set of classes*/
+                Output Displayer = new Output();
+                Displayer.InfoDisplay(lFoundStudent);
             }
             else
             {

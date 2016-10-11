@@ -45,6 +45,7 @@ namespace Flammenwerfer
             switch (sCommand)
             {
                 case "get": //if 'get' command is matched, go to query system
+                    Console.WriteLine(sParsedInCommand);
                     query.StartQuery(sParsedInCommand);
                     break;
 
@@ -135,11 +136,11 @@ namespace Flammenwerfer
             }
             foreach (Match m in mFNTypeParse)
             {
-                sRegexParser = "fn";
+                sRegexParser = "fname";
             }
             foreach (Match m in mLNTypeParse)
             {
-                sRegexParser = ("ln");
+                sRegexParser = ("lname");
             }
         }
 
