@@ -1,12 +1,12 @@
 <Students>
   <Student>
-    <SID>789</SID>
+    <SID>3-61-206</SID>
     <FName>John</FName>
     <LName>Smith</LName>
     <Courses>
       <Course>
-        <UID>789</UID>
-        <CourseID>8763</CourseID>
+        <UID>3-61-206</UID>
+        <CourseID>9380</CourseID>
         <CourseNumber>MA-230</CourseNumber>
         <CourseName>Calculus 2</CourseName>
         <Credits>5</Credits>
@@ -16,8 +16,8 @@
         <CourseGrade>C-</CourseGrade>
       </Course>
       <Course>
-        <UID>789</UID>
-        <CourseID>6548</CourseID>
+        <UID>3-61-206</UID>
+        <CourseID>7382</CourseID>
         <CourseNumber>EN-315</CourseNumber>
         <CourseName>Advanced English Composition</CourseName>
         <Credits>3</Credits>
@@ -29,13 +29,13 @@
     </Courses>
   </Student>
   <Student>
-    <SID>755</SID>
+    <SID>1-22-424</SID>
     <FName>Jake</FName>
     <LName>Johnson</LName>
     <Courses>
       <Course>
-        <UID>755</UID>
-        <CourseID>1689</CourseID>
+        <UID>1-22-424</UID>
+        <CourseID>9975</CourseID>
         <CourseNumber>ALC-120</CourseNumber>
         <CourseName>Basic Alchemy</CourseName>
         <Credits>8</Credits>
@@ -45,8 +45,8 @@
         <CourseGrade>B-</CourseGrade>
       </Course>
       <Course>
-        <UID>755</UID>
-        <CourseID>6548</CourseID>
+        <UID>1-22-424</UID>
+        <CourseID>9266</CourseID>
         <CourseNumber>EN-315</CourseNumber>
         <CourseName>Advanced English Composition</CourseName>
         <Credits>3</Credits>
@@ -58,13 +58,13 @@
     </Courses>
   </Student>
   <Student>
-    <SID>557</SID>
+    <SID>1-61-397</SID>
     <FName>Samantha</FName>
     <LName>Robertson</LName>
     <Courses>
       <Course>
-        <UID>557</UID>
-        <CourseID>1689</CourseID>
+        <UID>1-61-397</UID>
+        <CourseID>3139</CourseID>
         <CourseNumber>ALC-120</CourseNumber>
         <CourseName>Basic Alchemy</CourseName>
         <Credits>8</Credits>
@@ -74,8 +74,8 @@
         <CourseGrade>B-</CourseGrade>
       </Course>
       <Course>
-        <UID>557</UID>
-        <CourseID>1557</CourseID>
+        <UID>1-61-397</UID>
+        <CourseID>7644</CourseID>
         <CourseNumber>DBM-315</CourseNumber>
         <CourseName>Advanced Blood Magic</CourseName>
         <Credits>6</Credits>
