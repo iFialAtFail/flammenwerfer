@@ -86,7 +86,7 @@ namespace Flammenwerfer
             Console.WriteLine("    Course Type: " + sCourseType);
             Console.WriteLine("    Course Grade: " + sCourseGrade);
             Console.WriteLine("========================================================================");
-            Console.ReadLine();
+            //Console.ReadLine();
         }
     }
 
@@ -95,7 +95,7 @@ namespace Flammenwerfer
 
         public List<string> TestOutput = new List<string>();
 
-        public List<CourseItem> CourseResults = new List<CourseItem>();
+        //public List<CourseItem> CourseResults = new List<CourseItem>();
 
         //display student info from arbitrary array input
         public void InfoDisplay(List<string> sFoundStudent)
@@ -116,13 +116,18 @@ namespace Flammenwerfer
                 ciTempCourse.sSemester = sFoundStudent[i + 5];
                 ciTempCourse.sCourseType = sFoundStudent[i + 6];
                 ciTempCourse.sCourseGrade = sFoundStudent[i + 7];
-                CourseResults.Add(ciTempCourse);
+                //CourseResults.Add(ciTempCourse);
+                ciTempCourse.CourseWrite();
             }
 
-            for (int j = 0; j <= CourseResults.Count(); j++)
-            {
-                CourseResults[j].CourseWrite();
-            }
+            //CourseResults.ForEach(Item => Item.CourseWrite());
+
+            //for (int j = 0; j < CourseResults.Count(); j++)
+            //{
+            //    CourseResults[j].CourseWrite();
+                
+            //}
+            Console.ReadLine();
         }
 
         //dump any text output to console and return next command
