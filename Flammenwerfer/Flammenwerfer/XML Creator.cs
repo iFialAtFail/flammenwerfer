@@ -11,6 +11,7 @@ namespace Flammenwerfer
         Output cDisplayer = new Output();
         XMLPATH xPathFileLocation = new XMLPATH();
         string sPath = "";
+        string iIDNum = "";
         int iCourseCounter = 0;
 
         #endregion
@@ -41,6 +42,7 @@ namespace Flammenwerfer
                 int iReadableCourseNumber = iCurrentCourse++;
                 string sDumbDisplay = "Course Number " + iReadableCourseNumber + ": \n";
                 cDisplayer.DumbInfoDisplay(sDumbDisplay);
+                UIDNode(xDoc, xStudent);
                 CourseIDNode(xDoc, xStudent);
                 CourseNumberNode(xDoc, xStudent);
                 CourseNameNode(xDoc, xStudent);
@@ -76,8 +78,16 @@ namespace Flammenwerfer
         private void StudentIDNode(XmlDocument xDoc, XmlNode xStudent)
         {
             XmlNode xSID = xDoc.CreateElement("SID"); //<SID>
-            xSID.InnerText = cDisplayer.ReadInfoDisplay("Student ID number: "); //Input SID data
+            iIDNum = cDisplayer.ReadInfoDisplay("Student ID number: "); //Input SID data
+            xSID.InnerText = iIDNum;
             xStudent.AppendChild(xSID); //</SID>
+        }
+
+        private void UIDNode(XmlDocument xDoc, XmlNode xStudent)
+        {
+            XmlNode xUID = xDoc.CreateElement("UID");
+            xUID.InnerText = iIDNum;
+            xStudent.AppendChild(xUID);
         }
 
         private void StudentFNNode(XmlDocument xDoc, XmlNode xStudent)

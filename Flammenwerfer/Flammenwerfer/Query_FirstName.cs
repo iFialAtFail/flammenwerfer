@@ -14,6 +14,8 @@ namespace Flammenwerfer
             List<string> lFoundStudent = new List<string>();//this array will be used to send the found information to the next class
             lFoundStudent.Add("");
             string sArchiveFName = "";//used to hold FirstNames found in the xml file
+            string sArchiveUID = "";
+            string sSearchedUID = "";
             bool bStudentFound = false;//will be set to true if student is found
             int iCourseCounter = 0;
 
@@ -32,11 +34,13 @@ namespace Flammenwerfer
                 {
                     bStudentFound = true;
                     lFoundStudent.Add(Node["SID"].InnerText);
+                    sSearchedUID = Node["SID"].InnerText;
                     lFoundStudent.Add(Node["FName"].InnerText);
                     lFoundStudent.Add(Node["LName"].InnerText);
                     foreach (XmlNode xNode in XNListCourses)
                     {
-                        if (sArchiveFName == sSearchedFName)
+                        sArchiveUID = xNode["UID"].InnerText;
+                        if (sArchiveUID == sSearchedUID)
                         {
                             iCourseCounter++;
                             lFoundStudent.Add(xNode["CourseID"].InnerText);

@@ -5,6 +5,7 @@
     <LName>Smith</LName>
     <Courses>
       <Course>
+        <UID>789</UID>
         <CourseID>8763</CourseID>
         <CourseNumber>MA-230</CourseNumber>
         <CourseName>Calculus 2</CourseName>
@@ -15,6 +16,7 @@
         <CourseGrade>C-</CourseGrade>
       </Course>
       <Course>
+        <UID>789</UID>
         <CourseID>6548</CourseID>
         <CourseNumber>EN-315</CourseNumber>
         <CourseName>Advanced English Composition</CourseName>
@@ -32,6 +34,7 @@
     <LName>Johnson</LName>
     <Courses>
       <Course>
+        <UID>755</UID>
         <CourseID>1689</CourseID>
         <CourseNumber>ALC-120</CourseNumber>
         <CourseName>Basic Alchemy</CourseName>
@@ -42,6 +45,7 @@
         <CourseGrade>B-</CourseGrade>
       </Course>
       <Course>
+        <UID>755</UID>
         <CourseID>6548</CourseID>
         <CourseNumber>EN-315</CourseNumber>
         <CourseName>Advanced English Composition</CourseName>
@@ -59,6 +63,7 @@
     <LName>Robertson</LName>
     <Courses>
       <Course>
+        <UID>557</UID>
         <CourseID>1689</CourseID>
         <CourseNumber>ALC-120</CourseNumber>
         <CourseName>Basic Alchemy</CourseName>
@@ -69,6 +74,7 @@
         <CourseGrade>B-</CourseGrade>
       </Course>
       <Course>
+        <UID>557</UID>
         <CourseID>1557</CourseID>
         <CourseNumber>DBM-315</CourseNumber>
         <CourseName>Advanced Blood Magic</CourseName>

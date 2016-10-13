@@ -17,7 +17,6 @@ namespace Flammenwerfer
         string sCommand = ""; //Command string to compare
         List<string> sSeperatedCMD = new List<string>(); // split string 
         XML_Creator creation = new XML_Creator(); //Callout to XML User Creation
-        XML_Changer editor = new XML_Changer(); //Callout to XML Editing
         Query query = new Query(); // initiating callout for user search
         Output display = new Output(); //Visual display logic class callout
 
@@ -50,10 +49,6 @@ namespace Flammenwerfer
 
                 case "set": //if 'set' command is matched, go to user creation
                     creation.instantiator();
-                    break;
-
-                case "edit": //if 'edit' command is matched, go to user editor
-                    editor.FileTest();
                     break;
 
                 default: //if all other commands fail, flag as unmatched
