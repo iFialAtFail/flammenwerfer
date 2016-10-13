@@ -66,9 +66,19 @@ namespace Flammenwerfer
 
         public void Exit()
         {// when user is created, exit program
-            cDisplayer.DumbInfoDisplay("Please press any key to close program");
-            Console.ReadKey();
-            Environment.Exit(0);
+            string sYNtest = cDisplayer.ReadInfoDisplay("Do you want to search or edit again? (y/n)");
+            sYNtest = sYNtest.ToLower();
+            if (sYNtest == "y")
+            {
+                CommandInput input = new CommandInput();
+                input.InputReader();
+            }
+            else
+            {
+                cDisplayer.DumbInfoDisplay("Please press any key to close program");
+                Console.ReadKey();
+                Environment.Exit(0);
+            }
         }
 
         #endregion

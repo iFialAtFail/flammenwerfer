@@ -35,6 +35,7 @@ namespace Flammenwerfer
                 {
                     bStudentFound = true;
                     lFoundStudent.Add(Node["SID"].InnerText);
+                    sSearchedUID = Node["SID"].InnerText;
                     lFoundStudent.Add(Node["FName"].InnerText);
                     lFoundStudent.Add(Node["LName"].InnerText);
                     foreach (XmlNode xNode in XNListCourses)

@@ -86,4 +86,25 @@
       </Course>
     </Courses>
   </Student>
+  <Courses />
+  <Course />
+  <Student>
+    <SID>123</SID>
+    <FName>Rick</FName>
+    <LName>Baker</LName>
+    <Courses>
+      <Course>
+        <UID>123</UID>
+        <CourseID>0</CourseID>
+        <CourseNumber>ALC-120</CourseNumber>
+        <CourseName>Basic Alchemy</CourseName>
+        <Credits>3</Credits>
+        <Year>2016</Year>
+        <Semester>Fall</Semester>
+        <CourseType>Core</CourseType>
+        <CourseGrade>A</CourseGrade>
+      
+    </Course>
+    </Courses>
+  </Student>
 </Students>

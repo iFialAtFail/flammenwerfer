@@ -81,13 +81,12 @@ namespace Flammenwerfer
         /*Start of action command checking parser*/
         private void CommandParser()
         {/*Regular Expressions testing of inputted action command*/
-            MatchCollection mCommandGet = Regex.Matches(sSeperatedCMD[0], "(?i)get|(?i)f|(?i)r", RegexOptions.Singleline);
-            MatchCollection mCommandSet = Regex.Matches(sSeperatedCMD[0], "(?i)set|(?i)cr|(?i)add", RegexOptions.Singleline);
-            MatchCollection mCommandEdit = Regex.Matches(sSeperatedCMD[0], "(?i)edit|(?i)ch|(?i)al", RegexOptions.Singleline);
-            CommandMatchTest(mCommandGet, mCommandSet, mCommandEdit);
+            MatchCollection mCommandGet = Regex.Matches(sSeperatedCMD[0], "(?i)g|(?i)f|(?i)r", RegexOptions.Singleline);
+            MatchCollection mCommandSet = Regex.Matches(sSeperatedCMD[0], "(?i)s|(?i)cr|(?i)add", RegexOptions.Singleline);
+            CommandMatchTest(mCommandGet, mCommandSet);
         }
 
-        private void CommandMatchTest(MatchCollection mCommandGet, MatchCollection mCommandSet, MatchCollection mCommandEdit)
+        private void CommandMatchTest(MatchCollection mCommandGet, MatchCollection mCommandSet)
         { //Match testing from command regular expressions testing
             sCommand = "Fail";
             foreach (Match m in mCommandGet)
@@ -97,10 +96,6 @@ namespace Flammenwerfer
             foreach (Match m in mCommandSet)
             {
                 sCommand = "set";
-            }
-            foreach (Match m in mCommandEdit)
-            {
-                sCommand = "edit";
             }
         }
         /*end of action command checking parser*/
@@ -117,6 +112,7 @@ namespace Flammenwerfer
 
         private void RegexMatchTest(MatchCollection mSIDTypeParse, MatchCollection mFNTypeParse, MatchCollection mLNTypeParse)
         { //Match testing from query regular expressions testing
+            sRegexParser = "failed";
             foreach (Match m in mSIDTypeParse)
             {
                 sRegexParser = "sid";
@@ -134,6 +130,7 @@ namespace Flammenwerfer
         private void ParseMerger() 
         { //Parsing merger for query. layed out as: [Matched search type] [search paramater]
             sParsedInCommand = sRegexParser + " " + sSeperatedCMD[2];
+            Console.WriteLine(sParsedInCommand);
         }
         /*End of Query command passthrough parsing*/
         #endregion

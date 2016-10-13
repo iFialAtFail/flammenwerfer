@@ -60,12 +60,14 @@ namespace Flammenwerfer
             {
                 Output Displayer = new Output();
                 Displayer.InfoDisplay(lFoundStudent);
+                CommandInput input = new CommandInput();
+                input.InputReader();
             }
             else
             {
-                Console.WriteLine("Search Failed");
+                Output Display = new Output();
+                Display.DumbInfoDisplay("search failed");
                 Console.ReadKey();
-                Console.Clear();
                 CommandInput input = new CommandInput();
                 input.InputReader();
             }
