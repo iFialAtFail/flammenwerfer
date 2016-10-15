@@ -6,60 +6,10 @@ using System.Threading.Tasks;
 
 namespace Flammenwerfer
 {
+    // Dedicated results sub-class that can be arbitrarily instantiated to take in many results as well as add an easy way to use include helper methods to sort/manipulate results with little additional coding
+    // Presently the XML Creator presorts the data on data entry and so presently no sorting is needed.
     public class CourseItem
     {
-        public string sCurrentSemester;
-        public byte byCurrentSemester;
-        public byte byCourseSemester;
-        public void CourseComplete()
-        {
-            if (sCourseYear == DateTime.Now.ToString("YYYY"))
-            {
-
-                if (Convert.ToInt32(DateTime.Now.ToString("MM")) <= 5)
-                {
-                    sCurrentSemester = "Spring";
-                    byCurrentSemester = 0;
-                }
-                else if (Convert.ToInt32(DateTime.Now.ToString("MM")) > 5 && Convert.ToInt32(DateTime.Now.ToString("MM")) < 9)
-                {
-                    sCurrentSemester = "Summer";
-                    byCurrentSemester = 1;
-                }
-                else if (Convert.ToInt32(DateTime.Now.ToString("MM")) >= 9)
-                {
-                    sCurrentSemester = "Fall";
-                    byCurrentSemester = 3;
-                }
-
-                if (sSemester.ToUpper() == "SPRING")
-                {
-                    byCourseSemester = 0;
-                }
-                else if (sSemester.ToUpper() == "SUMMER")
-                {
-                    byCourseSemester = 1;
-                }
-                else if (sSemester.ToUpper() == "FALL")
-                {
-                    byCourseSemester = 3;
-                }
-
-                if (byCourseSemester < byCurrentSemester)
-                {
-                    bCompleted = true;
-                }
-                else if (byCourseSemester >= byCurrentSemester)
-                {
-                    bCompleted = false;
-                }
-            }
-            else if (Convert.ToInt32(sCourseYear) < Convert.ToInt32(DateTime.Now.ToString("YYYY")))
-            {
-                bCompleted = true;
-            }
-
-        }
         public String sStudentID;
         public String sFirstName;
         public String sLastName;
@@ -71,12 +21,13 @@ namespace Flammenwerfer
         public String sCourseYear;
         public String sCourseType;
         public String sCourseGrade;
-        public bool bCompleted;
 
+        //method used to display each instance of CourseItem's course details to the screen
         public void CourseWrite()
         {
-            Console.WriteLine("Student ID: " + sStudentID);
-            Console.WriteLine("Student Name: " + sLastName + ", " + sFirstName);
+            //Uncomment to re-show student information along with each class rather than simply before query results
+            //Console.WriteLine("Student ID: " + sStudentID);
+            //Console.WriteLine("Student Name: " + sLastName + ", " + sFirstName);
             Console.WriteLine("Course ID: " + sCourseID);
             Console.WriteLine("    Course Number: " + sCourseNbr);
             Console.WriteLine("    Course Name: " + sCourseName);
@@ -86,23 +37,30 @@ namespace Flammenwerfer
             Console.WriteLine("    Course Type: " + sCourseType);
             Console.WriteLine("    Course Grade: " + sCourseGrade);
             Console.WriteLine("========================================================================");
-            //Console.ReadLine();
         }
     }
 
+    //main output class which displays the query results
     class Output
     {
-
-        public List<string> TestOutput = new List<string>();
-
-        //public List<CourseItem> CourseResults = new List<CourseItem>();
-
         //display student info from arbitrary array input
+        //incoming list is formatted such that...
+            //slot 0 is hard-coded to list the number of incoming query results
+            //slot 1 is hard-coded as the queried student ID
+            //slots 2 and 3 are hard-coded as the queried student's first and last name respectively
+            //slots 4 and onward list queried course data of arbitrary length
         public void InfoDisplay(List<string> sFoundStudent)
         {
+            //display number of results passed in from query
             Console.WriteLine("Number of entries found: " + sFoundStudent[0]);
-            CourseItem ciTempCourse = new CourseItem();
 
+            //display student name and ID before listing courses
+            Console.WriteLine("Student ID: " + sFoundStudent[1]);
+            Console.WriteLine("Student Name: " + sFoundStudent[3] + ", " + sFoundStudent[2]);
+            Console.WriteLine("------------------------------------------------------------------------");
+
+            //iterate through incoming list of course results into a placeholder instance of CourseItem and then call the CourseWrite method to display the info of each returned class
+            CourseItem ciTempCourse = new CourseItem();
             for (int i = 4; i < sFoundStudent.Count - 1; i += 8)
             {
                 ciTempCourse.sStudentID = sFoundStudent[1];
@@ -116,28 +74,22 @@ namespace Flammenwerfer
                 ciTempCourse.sSemester = sFoundStudent[i + 5];
                 ciTempCourse.sCourseType = sFoundStudent[i + 6];
                 ciTempCourse.sCourseGrade = sFoundStudent[i + 7];
-                //CourseResults.Add(ciTempCourse);
                 ciTempCourse.CourseWrite();
             }
-
-            //CourseResults.ForEach(Item => Item.CourseWrite());
-
-            //for (int j = 0; j < CourseResults.Count(); j++)
-            //{
-            //    CourseResults[j].CourseWrite();
-                
-            //}
+            //Pause for user
             Console.ReadLine();
         }
 
         //dump any text output to console and return next command
+        //USED BY INPUT - DO NOT DELETE
         public String ReadInfoDisplay(String sInString)
         {
             Console.Write(sInString);
             return Console.ReadLine();
         }
 
-        //dump any text output to console
+        //dump any text output to console without returning anything
+        //USED BY INPUT - DO NOT DELETE
         public void DumbInfoDisplay(String sInString)
         {
             Console.WriteLine(sInString);
