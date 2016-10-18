@@ -1,35 +1,56 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
+
 namespace Flammenwerfer
 {
-    class Query_LastName
+    class Query_Search
     {
-        public void SearchLastName(string sSearchedLName)
+        public void Search(string sSearchParamater, string type)
         {
             List<string> lFoundStudent = new List<string>();//this array will be used to send the found information to the next class
             lFoundStudent.Add("");
-            string sArchiveLName = "";//used to hold LastNames found in the xml file
+            string sArchiveSearch = "";//used to hold FirstNames found in the xml file
             string sArchiveUID = "";
             string sSearchedUID = "";
             bool bStudentFound = false;//will be set to true if student is found
             int iCourseCounter = 0;
-
+            string SearchNode = "";
             XmlDocument xmlArchive = new XmlDocument();
             XMLPATH path = new XMLPATH();
             string spath = path.Path;
-            xmlArchive.Load(spath);//loads the precreated xml doc,Takes the path string from the XML_creator class
+            xmlArchive.Load(spath);//loads the precreated xml doc,takes the path string found in the XML_Creator class
             XmlNodeList XNList = xmlArchive.SelectNodes("/Students/Student");
             XmlNodeList XNListCourses = xmlArchive.SelectNodes("/Students/Student/Courses/Course");
 
+            switch (type)//here starts a check for each type of search(ID, First Name and Last Name)
+            {
+                case "sid":
+                    SearchNode = "SID";
+                    break;
+
+                case "fname":
+                    SearchNode = "FName";
+                    break;
+
+                case "lname":
+                    SearchNode = "LName";
+                    break;
+
+                default: //If no type was properly selected
+                    Console.WriteLine("search paramaters incorrect please see system analyst");
+                    Console.ReadKey();
+                    break;
+            }
+
             foreach (XmlNode Node in XNList)
             {
-                sArchiveLName = Node["LName"].InnerText.ToLower();
-                if (sArchiveLName == sSearchedLName)//if the searched name equal and achieved name then sFoundStudent is filled with the the information from the archieve
+                sArchiveSearch = Node[SearchNode].InnerText.ToLower();
+                if (sArchiveSearch == sSearchParamater)//if the searched name equal and achieved name then sFoundStudent is filled with the the information from the archieve
                 {
                     bStudentFound = true;
                     lFoundStudent.Add(Node["SID"].InnerText);
@@ -59,19 +80,17 @@ namespace Flammenwerfer
             {
                 Output Displayer = new Output();
                 Displayer.InfoDisplay(lFoundStudent);
+                CommandInput input = new CommandInput();
+                input.InputReader();
             }
             else
             {
-                Console.WriteLine("Search Failed");
+                Output Display = new Output();
+                Display.DumbInfoDisplay("search failed");
                 Console.ReadKey();
-                Console.Clear();
                 CommandInput input = new CommandInput();
                 input.InputReader();
             }
         }
     }
 }
-
-
-
-
