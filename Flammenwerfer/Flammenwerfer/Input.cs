@@ -28,7 +28,7 @@ namespace Flammenwerfer
         { //Entry point of Input, sets up logic structure of input system
             Console.Clear();
             sSeperatedCMD.Clear(); //ensures command entry is cleared out before new commands are entered
-            sInputCommand = display.ReadInfoDisplay("<action> *(<Search Type> <Search Data>)* \n *Only needed if searching \n \n ex. 'get fname John' returns query using first name John\n ex. 'get lname Smith' returns query using last name Smith\n ex. 'get sid 3-61-206' returns query using student ID \n \n ex. 'set' \n ENTER COMMAND: "); //takes in command to match prompt
+            sInputCommand = display.ReadInfoDisplay("<action> *(<Search Type> <Search Data>)* \n *Only needed if searching \n \n ex. 'get fname John' returns query using first name John\n ex. 'get lname Smith' returns query using last name Smith\n ex. 'get sid 3-61-206' returns query using student ID \n ex. 'set' starts user creation menu \n \n ENTER COMMAND: "); //takes in command to match prompt
             InputLayoutParser(); //Parses the layout text for passthrough to the query
             CommandParser(); //Parses the command into testable logic
             ParseGetSetTest(); //Actual command test logic
