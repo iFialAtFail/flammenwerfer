@@ -1,3 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Students>
   <Student>
     <SID>3-61-206</SID>
@@ -103,8 +104,24 @@
         <Semester>Fall</Semester>
         <CourseType>Core</CourseType>
         <CourseGrade>A</CourseGrade>
-      
-    </Course>
+      </Course>
     </Courses>
+  </Student>
+  <Courses />
+  <Course />
+  <Student>
+    <SID>5-87-964</SID>
+    <FName>Kallyn</FName>
+    <LName>Gowdy</LName>
+    <UID>5-87-964</UID>
+    <CourseID>3385</CourseID>
+    <CourseNumber>Al 120</CourseNumber>
+    <CourseName>Basic Alchemy</CourseName>
+    <Credits>3</Credits>
+    <CourseYear>2015</CourseYear>
+    <Semester>fall</Semester>
+    <CourseType>General Education</CourseType>
+    <CourseGrade>
+    </CourseGrade>
   </Student>
 </Students>
