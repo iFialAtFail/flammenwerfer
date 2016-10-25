@@ -124,4 +124,30 @@
     <CourseGrade>
     </CourseGrade>
   </Student>
+  <Course />
+  <Course />
+  <Courses />
+  <Student>
+    <SID>1-22-333</SID>
+    <FName>Test</FName>
+    <LName>Name</LName>
+    <UID>1-22-333</UID>
+    <CourseID>9956</CourseID>
+    <CourseNumber>AL 332</CourseNumber>
+    <CourseName>Advanced Alchemical Methods</CourseName>
+    <Credits>5</Credits>
+    <CourseYear>2016</CourseYear>
+    <Semester>Fall</Semester>
+    <CourseType>Required</CourseType>
+    <CourseGrade>B-</CourseGrade>
+    <UID>1-22-333</UID>
+    <CourseID>9987</CourseID>
+    <CourseNumber>MA 133</CourseNumber>
+    <CourseName>Calculus 1</CourseName>
+    <Credits>5</Credits>
+    <CourseYear>2016 </CourseYear>
+    <Semester>fall</Semester>
+    <CourseType>General Education</CourseType>
+    <CourseGrade>C-</CourseGrade>
+  </Student>
 </Students>

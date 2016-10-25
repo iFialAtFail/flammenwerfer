@@ -93,7 +93,6 @@ namespace Flammenwerfer
         public void DumbInfoDisplay(String sInString)
         {
             Console.WriteLine(sInString);
-            Console.ReadLine();
         }
 
     }
