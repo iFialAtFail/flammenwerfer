@@ -38,6 +38,25 @@ namespace Flammenwerfer
             Console.WriteLine("    Course Grade: " + sCourseGrade);
             Console.WriteLine("========================================================================");
         }
+        /// <summary>
+        /// Writes out all the course information in a formatted block of course information in one long string object.
+        /// </summary>
+        /// <returns>String of course information formatted properly.</returns>
+        public string CourseWriteString()
+        {
+
+            string courseInfoString = Environment.NewLine +
+                "Course ID: " + sCourseID + Environment.NewLine +
+            "    Course Number: " + sCourseNbr + Environment.NewLine +
+            "    Course Name: " + sCourseName + Environment.NewLine +
+            "    Course Credits: " + sCredits + Environment.NewLine +
+            "    Semester: " + sSemester + Environment.NewLine +
+            "    Year: " + sCourseYear + Environment.NewLine +
+            "    Course Type: " + sCourseType + Environment.NewLine +
+            "    Course Grade: " + sCourseGrade + Environment.NewLine +
+            "========================================================================";
+            return courseInfoString;
+        }
     }
 
     //main output class which displays the query results
