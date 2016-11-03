@@ -62,12 +62,28 @@ namespace Flammenwerfer
     //main output class which displays the query results
     class Output
     {
+        //used to know whether to do the GUI methods or command line methods.
+        private bool usingGUI = false;
+
+        /// <summary>
+        /// Constructor to let the class know it's for the GUI.
+        /// </summary>
+        /// <param name="usingGUI"></param>
+        public Output(bool usingGUI)
+        {
+            this.usingGUI = (usingGUI) ? true : false;
+        }
+
+        /// <summary>
+        /// Empty constructor to maintain legacy code.
+        /// </summary>
+        public Output() { }
         //display student info from arbitrary array input
         //incoming list is formatted such that...
-            //slot 0 is hard-coded to list the number of incoming query results
-            //slot 1 is hard-coded as the queried student ID
-            //slots 2 and 3 are hard-coded as the queried student's first and last name respectively
-            //slots 4 and onward list queried course data of arbitrary length
+        //slot 0 is hard-coded to list the number of incoming query results
+        //slot 1 is hard-coded as the queried student ID
+        //slots 2 and 3 are hard-coded as the queried student's first and last name respectively
+        //slots 4 and onward list queried course data of arbitrary length
         public void InfoDisplay(List<string> sFoundStudent)
         {
             //display number of results passed in from query
@@ -93,7 +109,15 @@ namespace Flammenwerfer
                 ciTempCourse.sSemester = sFoundStudent[i + 5];
                 ciTempCourse.sCourseType = sFoundStudent[i + 6];
                 ciTempCourse.sCourseGrade = sFoundStudent[i + 7];
-                ciTempCourse.CourseWrite();
+                if (usingGUI)
+                {
+                    ciTempCourse.CourseWriteString();
+                }
+                else
+                {
+                    ciTempCourse.CourseWrite();
+                }
+                
             }
             //Pause for user
             Console.ReadLine();
