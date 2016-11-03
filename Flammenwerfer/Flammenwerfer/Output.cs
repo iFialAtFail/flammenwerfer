@@ -64,6 +64,7 @@ namespace Flammenwerfer
     {
         //used to know whether to do the GUI methods or command line methods.
         private bool usingGUI = false;
+        private string studentInfoString;
 
         /// <summary>
         /// Constructor to let the class know it's for the GUI.
@@ -121,6 +122,48 @@ namespace Flammenwerfer
             }
             //Pause for user
             Console.ReadLine();
+        }
+
+        /// <summary>
+        /// InfoDisplay Method Override to work for GUI
+        /// </summary>
+        /// <param name="sFoundStudent">The student(s) found.</param>
+        /// <param name="usingGUI">Indicated whether the GUI version of method should be used.</param>
+        /// <returns>Returns all textual information from the found student.</returns>
+        public string InfoDisplay(List<string> sFoundStudent, bool usingGUI)
+        {
+            if (usingGUI)
+            {
+                studentInfoString = "Number of entries found: " + sFoundStudent[0] + Environment.NewLine +
+                    "Student ID: " + sFoundStudent[1] + Environment.NewLine +
+                "Student Name: " + sFoundStudent[3] + ", " + sFoundStudent[2] + Environment.NewLine +
+                "------------------------------------------------------------------------" + Environment.NewLine;
+            }
+            else
+            {
+                InfoDisplay(sFoundStudent);
+            }
+
+
+            //iterate through incoming list of course results into a placeholder instance of CourseItem and then call the CourseWrite method to display the info of each returned class
+            CourseItem ciTempCourse = new CourseItem();
+            for (int i = 4; i < sFoundStudent.Count - 1; i += 8)
+            {
+                ciTempCourse.sStudentID = sFoundStudent[1];
+                ciTempCourse.sFirstName = sFoundStudent[2];
+                ciTempCourse.sLastName = sFoundStudent[3];
+                ciTempCourse.sCourseID = sFoundStudent[i];
+                ciTempCourse.sCourseNbr = sFoundStudent[i + 1];
+                ciTempCourse.sCourseName = sFoundStudent[i + 2];
+                ciTempCourse.sCredits = sFoundStudent[i + 3];
+                ciTempCourse.sCourseYear = sFoundStudent[i + 4];
+                ciTempCourse.sSemester = sFoundStudent[i + 5];
+                ciTempCourse.sCourseType = sFoundStudent[i + 6];
+                ciTempCourse.sCourseGrade = sFoundStudent[i + 7];
+                studentInfoString += ciTempCourse.CourseWriteString();
+                
+            }
+            return studentInfoString;
         }
 
         //dump any text output to console and return next command
