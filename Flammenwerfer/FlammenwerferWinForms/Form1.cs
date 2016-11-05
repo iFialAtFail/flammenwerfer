@@ -17,5 +17,29 @@ namespace FlammenwerferWinForms
         {
             InitializeComponent();
         }
+
+        private void rbFirstName_CheckedChanged(object sender, EventArgs e)
+        {
+            lblInstruct.Visible = true;
+            lblInstruct.Text = "Enter students first name";
+        }
+
+        private void rbLastName_CheckedChanged(object sender, EventArgs e)
+        {
+            lblInstruct.Visible = true;
+            lblInstruct.Text = "Enter students last name";
+        }
+
+        private void rbID_CheckedChanged(object sender, EventArgs e)
+        {
+            lblInstruct.Visible = true;
+            lblInstruct.Text = "Enter students I.D. #";
+        }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            tbDisplay.Text = "";
+            tbDisplay.Text = "To search for a student simply select your search type, then enter in the required information. The students basic information as well as the course information will be displayed, and the course completion information is displayed on the far right.";
+        }
     }
 }
