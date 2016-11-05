@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalculateTotalPercentage.cs" />
+    <Compile Include="CalculateCourseTypes.cs" />
     <Compile Include="Query_Search.cs" />
     <Compile Include="Input.cs" />
     <Compile Include="Output.cs" />

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Flammenwerfer
 {
     // Dedicated results sub-class that can be arbitrarily instantiated to take in many results as well as add an easy way to use include helper methods to sort/manipulate results with little additional coding
@@ -43,16 +44,23 @@ namespace Flammenwerfer
     //main output class which displays the query results
     class Output
     {
+        
         //display student info from arbitrary array input
         //incoming list is formatted such that...
-            //slot 0 is hard-coded to list the number of incoming query results
-            //slot 1 is hard-coded as the queried student ID
-            //slots 2 and 3 are hard-coded as the queried student's first and last name respectively
-            //slots 4 and onward list queried course data of arbitrary length
+        //slot 0 is hard-coded to list the number of incoming query results
+        //slot 1 is hard-coded as the queried student ID
+        //slots 2 and 3 are hard-coded as the queried student's first and last name respectively
+        //slots 4 and onward list queried course data of arbitrary length
         public void InfoDisplay(List<string> sFoundStudent)
         {
+
+            //sets up a list that accepts all courses that have been completed
+            List<string> calculator = new List<string>();
+         
             //display number of results passed in from query
-            Console.WriteLine("Number of entries found: " + sFoundStudent[0]);
+           // -- commenting out because it seems redundant.  if you really want it just take the comment out
+           // Console.WriteLine("Number of entries found: " + sFoundStudent[0]);
+
 
             //display student name and ID before listing courses
             Console.WriteLine("Student ID: " + sFoundStudent[1]);
@@ -61,6 +69,7 @@ namespace Flammenwerfer
 
             //iterate through incoming list of course results into a placeholder instance of CourseItem and then call the CourseWrite method to display the info of each returned class
             CourseItem ciTempCourse = new CourseItem();
+                       
             for (int i = 4; i < sFoundStudent.Count - 1; i += 8)
             {
                 ciTempCourse.sStudentID = sFoundStudent[1];
@@ -75,7 +84,30 @@ namespace Flammenwerfer
                 ciTempCourse.sCourseType = sFoundStudent[i + 6];
                 ciTempCourse.sCourseGrade = sFoundStudent[i + 7];
                 ciTempCourse.CourseWrite();
-            }
+
+                //Checks to make sure student completed courses before calculating courses completed 
+                if ("A".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || "A-".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true ||
+                    "B+".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || 'B'.Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || "B-".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true ||
+                    "C+".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || 'C'.Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || "C-".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true ||
+                    "D+".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || 'D'.Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || "D-".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true)
+                {
+                    calculator.Add(ciTempCourse.sCourseType);
+                }                 
+
+               }
+            //calculate total number of classes completed and also find % toward degree
+
+            var display = new CalculateTotalPercentage();
+           Console.WriteLine("Number of Courses Completed: " + display.progressCalculator(calculator));
+            var courseTotal = Math.Round(((double)(display.progressCalculator(calculator)) / 42) * 100, 3);
+          
+            Console.WriteLine("Percentage of Overall Degree Completion: " + courseTotal + " %");
+          
+            //this will calculate the percentage of core, electives and gen eds completed
+             var courseTypes = new CalculateCourseTypes();
+            courseTypes.courseChecker(calculator);
+                    
+            
             //Pause for user
             Console.ReadLine();
         }
@@ -94,6 +126,8 @@ namespace Flammenwerfer
         {
             Console.WriteLine(sInString);
         }
+
+
 
     }
 }
