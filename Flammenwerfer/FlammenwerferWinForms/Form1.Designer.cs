@@ -106,7 +106,9 @@
             // 
             // tbDisplay
             // 
+            this.tbDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.tbDisplay.Location = new System.Drawing.Point(139, 20);
+            this.tbDisplay.MaxLength = 50000;
             this.tbDisplay.Multiline = true;
             this.tbDisplay.Name = "tbDisplay";
             this.tbDisplay.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -115,6 +117,8 @@
             // 
             // lblCourseCompletion
             // 
+            this.lblCourseCompletion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCourseCompletion.AutoSize = true;
             this.lblCourseCompletion.Location = new System.Drawing.Point(492, 20);
             this.lblCourseCompletion.Name = "lblCourseCompletion";
@@ -124,6 +128,8 @@
             // 
             // lblCoreComp
             // 
+            this.lblCoreComp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCoreComp.AutoSize = true;
             this.lblCoreComp.Location = new System.Drawing.Point(483, 62);
             this.lblCoreComp.Name = "lblCoreComp";
@@ -133,6 +139,8 @@
             // 
             // lblGenEdComp
             // 
+            this.lblGenEdComp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblGenEdComp.AutoSize = true;
             this.lblGenEdComp.Location = new System.Drawing.Point(472, 86);
             this.lblGenEdComp.Name = "lblGenEdComp";
@@ -142,6 +150,8 @@
             // 
             // lblElectiveComp
             // 
+            this.lblElectiveComp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblElectiveComp.AutoSize = true;
             this.lblElectiveComp.Location = new System.Drawing.Point(467, 110);
             this.lblElectiveComp.Name = "lblElectiveComp";
