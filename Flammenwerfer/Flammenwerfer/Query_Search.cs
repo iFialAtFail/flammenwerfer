@@ -10,6 +10,21 @@ namespace Flammenwerfer
 {
     class Query_Search
     {
+        /// <summary>
+        /// Constructor for legacy code.
+        /// </summary>
+        private bool usingGUI = false;
+
+        /// <summary>
+        /// Constructor for using GUI
+        /// </summary>
+        /// <param name="usingGUI"></param>
+        public Query_Search(bool usingGUI)
+        {
+            this.usingGUI = usingGUI;
+        }
+        public Query_Search() { }
+
         public void Search(string sSearchParamater, string type)
         {
             List<string> lFoundStudent = new List<string>();//this array will be used to send the found information to the next class
@@ -79,17 +94,34 @@ namespace Flammenwerfer
             if (bStudentFound == true)
             {
                 Output Displayer = new Output();
-                Displayer.InfoDisplay(lFoundStudent);
-                CommandInput input = new CommandInput();
-                input.InputReader();
+                if (usingGUI)
+                {
+                    Displayer.InfoDisplay(lFoundStudent, true);
+                }
+
+                else
+                {
+                    Displayer.InfoDisplay(lFoundStudent);
+                    CommandInput input = new CommandInput();
+                    input.InputReader();
+                }
+
+
+                
             }
             else
             {
-                Output Display = new Output();
-                Display.DumbInfoDisplay("search failed");
-                Console.ReadKey();
-                CommandInput input = new CommandInput();
-                input.InputReader();
+                if (usingGUI)
+                    return;
+                else
+                {
+                    Output Display = new Output();
+                    Display.DumbInfoDisplay("search failed");
+                    Console.ReadKey();
+                    CommandInput input = new CommandInput();
+                    input.InputReader();
+                }
+                
             }
         }
     }
