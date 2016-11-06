@@ -118,19 +118,6 @@ namespace Flammenwerfer
                 ciTempCourse.CourseWrite();
             
             }
-
-            //calculate total number of classes completed and also find % toward degree
-
-            var display = new CalculateTotalPercentage();
-            Console.WriteLine("Number of Courses Completed: " + display.progressCalculator(calculator));
-            var courseTotal = Math.Round(((double)(display.progressCalculator(calculator)) / 42) * 100, 3);
-
-            Console.WriteLine("Percentage of Overall Degree Completion: " + courseTotal + " %");
-
-            //this will calculate the percentage of core, electives and gen eds completed
-            var courseTypes = new CalculateCourseTypes();
-            courseTypes.courseChecker(calculator);
-
             //Pause for user
             Console.ReadLine();
         }
