@@ -116,7 +116,7 @@ namespace Flammenwerfer
                 ciTempCourse.sCourseType = sFoundStudent[i + 6];
                 ciTempCourse.sCourseGrade = sFoundStudent[i + 7];
                 ciTempCourse.CourseWrite();
-
+            
             }
             //Pause for user
             Console.ReadLine();
