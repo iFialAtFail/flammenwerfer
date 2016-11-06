@@ -87,9 +87,10 @@ namespace Flammenwerfer
         //slots 4 and onward list queried course data of arbitrary length
         public void InfoDisplay(List<string> sFoundStudent)
         {
-
-            //sets up a list that accepts all courses that have been completed
-            List<string> calculator = new List<string>();
+            if (usingGUI)
+            {
+                InfoDisplay(sFoundStudent, usingGUI);
+            }
 
             //display number of results passed in from query
             Console.WriteLine("Number of entries found: " + sFoundStudent[0]);
@@ -114,38 +115,9 @@ namespace Flammenwerfer
                 ciTempCourse.sSemester = sFoundStudent[i + 5];
                 ciTempCourse.sCourseType = sFoundStudent[i + 6];
                 ciTempCourse.sCourseGrade = sFoundStudent[i + 7];
-                if (usingGUI)
-                {
-                    ciTempCourse.CourseWriteString();
-                }
-                else
-                {
-                    ciTempCourse.CourseWrite();
-                }
-                //Checks to make sure student completed courses before calculating courses completed 
-                if ("A".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || "A-".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true ||
-                    "B+".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || 'B'.Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || "B-".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true ||
-                    "C+".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || 'C'.Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || "C-".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true ||
-                    "D+".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || 'D'.Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || "D-".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true)
-                {
-                    calculator.Add(ciTempCourse.sCourseType);
-                }
-
+                ciTempCourse.CourseWrite();
 
             }
-
-            //calculate total number of classes completed and also find % toward degree
-
-            var display = new CalculateTotalPercentage();
-            Console.WriteLine("Number of Courses Completed: " + display.progressCalculator(calculator));
-            var courseTotal = Math.Round(((double)(display.progressCalculator(calculator)) / 42) * 100, 3);
-
-            Console.WriteLine("Percentage of Overall Degree Completion: " + courseTotal + " %");
-
-            //this will calculate the percentage of core, electives and gen eds completed
-            var courseTypes = new CalculateCourseTypes();
-            courseTypes.courseChecker(calculator);
-
             //Pause for user
             Console.ReadLine();
         }
@@ -158,6 +130,9 @@ namespace Flammenwerfer
         /// <returns>Returns all textual information from the found student.</returns>
         public string InfoDisplay(List<string> sFoundStudent, bool usingGUI)
         {
+            //sets up a list that accepts all courses that have been completed
+            List<string> calculator = new List<string>();
+
             if (usingGUI)
             {
                 studentInfoString = "Number of entries found: " + sFoundStudent[0] + Environment.NewLine +
@@ -187,7 +162,28 @@ namespace Flammenwerfer
                 ciTempCourse.sCourseType = sFoundStudent[i + 6];
                 ciTempCourse.sCourseGrade = sFoundStudent[i + 7];
                 studentInfoString += ciTempCourse.CourseWriteString();
-                
+
+                //Checks to make sure student completed courses before calculating courses completed 
+                if ("A".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || "A-".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true ||
+                    "B+".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || 'B'.Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || "B-".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true ||
+                    "C+".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || 'C'.Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || "C-".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true ||
+                    "D+".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || 'D'.Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || "D-".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true)
+                {
+                    calculator.Add(ciTempCourse.sCourseType);
+                }
+
+                //calculate total number of classes completed and also find % toward degree
+
+                var display = new CalculateTotalPercentage();
+                Console.WriteLine("Number of Courses Completed: " + calculator.Count.ToString());
+                double courseTotal = Math.Round(((double)(calculator.Count) / 42) * 100, 3);
+
+                Console.WriteLine("Percentage of Overall Degree Completion: " + courseTotal + " %");
+
+                //this will calculate the percentage of core, electives and gen eds completed
+                var courseTypes = new CalculateCourseTypes();
+                courseTypes.courseChecker(calculator);
+
             }
             return studentInfoString;
         }
