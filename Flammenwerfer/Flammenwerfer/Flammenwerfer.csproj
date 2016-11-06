@@ -45,7 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalculateCourseTypes.cs" />
-    <Compile Include="CalculateTotalPercentages.cs" />
     <Compile Include="Query_Search.cs" />
     <Compile Include="Input.cs" />
     <Compile Include="Output.cs" />
