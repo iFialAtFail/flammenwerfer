@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace Flammenwerfer
 {
     // Dedicated results sub-class that can be arbitrarily instantiated to take in many results as well as add an easy way to use include helper methods to sort/manipulate results with little additional coding
@@ -39,12 +38,47 @@ namespace Flammenwerfer
             Console.WriteLine("    Course Grade: " + sCourseGrade);
             Console.WriteLine("========================================================================");
         }
+        /// <summary>
+        /// Writes out all the course information in a formatted block of course information in one long string object.
+        /// </summary>
+        /// <returns>String of course information formatted properly.</returns>
+        public string CourseWriteString()
+        {
+
+            string courseInfoString = Environment.NewLine +
+                "Course ID: " + sCourseID + Environment.NewLine +
+            "    Course Number: " + sCourseNbr + Environment.NewLine +
+            "    Course Name: " + sCourseName + Environment.NewLine +
+            "    Course Credits: " + sCredits + Environment.NewLine +
+            "    Semester: " + sSemester + Environment.NewLine +
+            "    Year: " + sCourseYear + Environment.NewLine +
+            "    Course Type: " + sCourseType + Environment.NewLine +
+            "    Course Grade: " + sCourseGrade + Environment.NewLine +
+            "========================================================================";
+            return courseInfoString;
+        }
     }
 
     //main output class which displays the query results
     class Output
     {
-        
+        //used to know whether to do the GUI methods or command line methods.
+        private bool usingGUI = false;
+        private string studentInfoString;
+
+        /// <summary>
+        /// Constructor to let the class know it's for the GUI.
+        /// </summary>
+        /// <param name="usingGUI"></param>
+        public Output(bool usingGUI)
+        {
+            this.usingGUI = (usingGUI) ? true : false;
+        }
+
+        /// <summary>
+        /// Empty constructor to maintain legacy code.
+        /// </summary>
+        public Output() { }
         //display student info from arbitrary array input
         //incoming list is formatted such that...
         //slot 0 is hard-coded to list the number of incoming query results
@@ -53,14 +87,8 @@ namespace Flammenwerfer
         //slots 4 and onward list queried course data of arbitrary length
         public void InfoDisplay(List<string> sFoundStudent)
         {
-
-            //sets up a list that accepts all courses that have been completed
-            List<string> calculator = new List<string>();
-         
             //display number of results passed in from query
-           // -- commenting out because it seems redundant.  if you really want it just take the comment out
-           // Console.WriteLine("Number of entries found: " + sFoundStudent[0]);
-
+            Console.WriteLine("Number of entries found: " + sFoundStudent[0]);
 
             //display student name and ID before listing courses
             Console.WriteLine("Student ID: " + sFoundStudent[1]);
@@ -69,7 +97,6 @@ namespace Flammenwerfer
 
             //iterate through incoming list of course results into a placeholder instance of CourseItem and then call the CourseWrite method to display the info of each returned class
             CourseItem ciTempCourse = new CourseItem();
-                       
             for (int i = 4; i < sFoundStudent.Count - 1; i += 8)
             {
                 ciTempCourse.sStudentID = sFoundStudent[1];
@@ -83,33 +110,60 @@ namespace Flammenwerfer
                 ciTempCourse.sSemester = sFoundStudent[i + 5];
                 ciTempCourse.sCourseType = sFoundStudent[i + 6];
                 ciTempCourse.sCourseGrade = sFoundStudent[i + 7];
-                ciTempCourse.CourseWrite();
-
-                //Checks to make sure student completed courses before calculating courses completed 
-                if ("A".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || "A-".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true ||
-                    "B+".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || 'B'.Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || "B-".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true ||
-                    "C+".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || 'C'.Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || "C-".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true ||
-                    "D+".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || 'D'.Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || "D-".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true)
+                if (usingGUI)
                 {
-                    calculator.Add(ciTempCourse.sCourseType);
-                }                 
-
-               }
-            //calculate total number of classes completed and also find % toward degree
-
-            var display = new CalculateTotalPercentage();
-           Console.WriteLine("Number of Courses Completed: " + display.progressCalculator(calculator));
-            var courseTotal = Math.Round(((double)(display.progressCalculator(calculator)) / 42) * 100, 3);
-          
-            Console.WriteLine("Percentage of Overall Degree Completion: " + courseTotal + " %");
-          
-            //this will calculate the percentage of core, electives and gen eds completed
-             var courseTypes = new CalculateCourseTypes();
-            courseTypes.courseChecker(calculator);
-                    
-            
+                    ciTempCourse.CourseWriteString();
+                }
+                else
+                {
+                    ciTempCourse.CourseWrite();
+                }
+                
+            }
             //Pause for user
             Console.ReadLine();
+        }
+
+        /// <summary>
+        /// InfoDisplay Method Override to work for GUI
+        /// </summary>
+        /// <param name="sFoundStudent">The student(s) found.</param>
+        /// <param name="usingGUI">Indicated whether the GUI version of method should be used.</param>
+        /// <returns>Returns all textual information from the found student.</returns>
+        public string InfoDisplay(List<string> sFoundStudent, bool usingGUI)
+        {
+            if (usingGUI)
+            {
+                studentInfoString = "Number of entries found: " + sFoundStudent[0] + Environment.NewLine +
+                    "Student ID: " + sFoundStudent[1] + Environment.NewLine +
+                "Student Name: " + sFoundStudent[3] + ", " + sFoundStudent[2] + Environment.NewLine +
+                "------------------------------------------------------------------------" + Environment.NewLine;
+            }
+            else
+            {
+                InfoDisplay(sFoundStudent);
+            }
+
+
+            //iterate through incoming list of course results into a placeholder instance of CourseItem and then call the CourseWrite method to display the info of each returned class
+            CourseItem ciTempCourse = new CourseItem();
+            for (int i = 4; i < sFoundStudent.Count - 1; i += 8)
+            {
+                ciTempCourse.sStudentID = sFoundStudent[1];
+                ciTempCourse.sFirstName = sFoundStudent[2];
+                ciTempCourse.sLastName = sFoundStudent[3];
+                ciTempCourse.sCourseID = sFoundStudent[i];
+                ciTempCourse.sCourseNbr = sFoundStudent[i + 1];
+                ciTempCourse.sCourseName = sFoundStudent[i + 2];
+                ciTempCourse.sCredits = sFoundStudent[i + 3];
+                ciTempCourse.sCourseYear = sFoundStudent[i + 4];
+                ciTempCourse.sSemester = sFoundStudent[i + 5];
+                ciTempCourse.sCourseType = sFoundStudent[i + 6];
+                ciTempCourse.sCourseGrade = sFoundStudent[i + 7];
+                studentInfoString += ciTempCourse.CourseWriteString();
+                
+            }
+            return studentInfoString;
         }
 
         //dump any text output to console and return next command
@@ -126,8 +180,6 @@ namespace Flammenwerfer
         {
             Console.WriteLine(sInString);
         }
-
-
 
     }
 }
