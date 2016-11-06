@@ -87,6 +87,10 @@ namespace Flammenwerfer
         //slots 4 and onward list queried course data of arbitrary length
         public void InfoDisplay(List<string> sFoundStudent)
         {
+
+            //sets up a list that accepts all courses that have been completed
+            List<string> calculator = new List<string>();
+
             //display number of results passed in from query
             Console.WriteLine("Number of entries found: " + sFoundStudent[0]);
 
@@ -118,8 +122,30 @@ namespace Flammenwerfer
                 {
                     ciTempCourse.CourseWrite();
                 }
-                
+                //Checks to make sure student completed courses before calculating courses completed 
+                if ("A".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || "A-".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true ||
+                    "B+".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || 'B'.Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || "B-".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true ||
+                    "C+".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || 'C'.Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || "C-".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true ||
+                    "D+".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || 'D'.Equals(ciTempCourse.sCourseGrade.ToUpper()) == true || "D-".Equals(ciTempCourse.sCourseGrade.ToUpper()) == true)
+                {
+                    calculator.Add(ciTempCourse.sCourseType);
+                }
+
+
             }
+
+            //calculate total number of classes completed and also find % toward degree
+
+            var display = new CalculateTotalPercentage();
+            Console.WriteLine("Number of Courses Completed: " + display.progressCalculator(calculator));
+            var courseTotal = Math.Round(((double)(display.progressCalculator(calculator)) / 42) * 100, 3);
+
+            Console.WriteLine("Percentage of Overall Degree Completion: " + courseTotal + " %");
+
+            //this will calculate the percentage of core, electives and gen eds completed
+            var courseTypes = new CalculateCourseTypes();
+            courseTypes.courseChecker(calculator);
+
             //Pause for user
             Console.ReadLine();
         }
