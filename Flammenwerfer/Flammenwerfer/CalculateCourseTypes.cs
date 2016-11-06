@@ -40,9 +40,9 @@ namespace Flammenwerfer
                 }
 
             }
-            Console.WriteLine("Percentage of core courses completed: " + Math.Round(((double)coreCounter / 26) * 100, 3) + "%");
-            Console.WriteLine("Percentage of general education classes completed: " + Math.Round(((double)genEdCounter / 8) * 100, 3) + "%");
-            Console.WriteLine("Percentage of electives completed: " + Math.Round(((double)electiveCounter / 8) * 100, 3) + "%");
+            Console.WriteLine("Percentage of Core Courses Completed: " + Math.Round(((double)coreCounter / 26) * 100, 3) + "%");
+            Console.WriteLine("Percentage of General Education Classes Completed: " + Math.Round(((double)genEdCounter / 8) * 100, 3) + "%");
+            Console.WriteLine("Percentage of Electives Completed: " + Math.Round(((double)electiveCounter / 8) * 100, 3) + "%");
 
         }
 
