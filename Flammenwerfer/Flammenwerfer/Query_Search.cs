@@ -64,6 +64,7 @@ namespace Flammenwerfer
 
             foreach (XmlNode Node in XNList)
             {
+
                 sArchiveSearch = Node[SearchNode].InnerText.ToLower();
                 if (sArchiveSearch == sSearchParamater)//if the searched name equal and achieved name then sFoundStudent is filled with the the information from the archieve
                 {
