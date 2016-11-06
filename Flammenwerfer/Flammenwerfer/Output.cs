@@ -174,6 +174,7 @@ namespace Flammenwerfer
 
                 //calculate total number of classes completed and also find % toward degree
 
+                var display = new CalculateTotalPercentage();
                 Console.WriteLine("Number of Courses Completed: " + calculator.Count.ToString());
                 double courseTotal = Math.Round(((double)(calculator.Count) / 42) * 100, 3);
 
