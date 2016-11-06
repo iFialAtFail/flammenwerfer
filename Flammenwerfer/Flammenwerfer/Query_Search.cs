@@ -10,11 +10,11 @@ namespace Flammenwerfer
 {
     class Query_Search
     {
-        /// <summary>
-        /// Constructor for legacy code.
-        /// </summary>
+        #region Properties and fields
         private bool usingGUI = false;
-
+        private List<string> studentsFoundInQuery;
+        public List<string> StudentsFoundInQuery { get { return studentsFoundInQuery; } }
+        #endregion
         /// <summary>
         /// Constructor for using GUI
         /// </summary>
@@ -23,6 +23,9 @@ namespace Flammenwerfer
         {
             this.usingGUI = usingGUI;
         }
+        /// <summary>
+        /// Constructor for legacy code.
+        /// </summary>
         public Query_Search() { }
 
         public void Search(string sSearchParamater, string type)
@@ -97,7 +100,7 @@ namespace Flammenwerfer
                 Output Displayer = new Output();
                 if (usingGUI)
                 {
-                    Displayer.InfoDisplay(lFoundStudent, true);
+                    studentsFoundInQuery = lFoundStudent;
                 }
 
                 else
