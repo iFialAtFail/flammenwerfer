@@ -80,9 +80,9 @@ namespace FlammenwerferWinForms
             else
             {
                 tbDisplay.Text = "No results found";
-                lblCoreComp.Text = "Core Completion: ";
-                lblElectiveComp.Text = "Elective Completion: ";
-                lblGenEdComp.Text = "GenEd Completion: ";
+                lblCoreComp.Text = "Core Class Completion: ";
+                lblElectiveComp.Text = "Elective Class Completion: ";
+                lblGenEdComp.Text = "GenEd Class Completion: ";
             }
         }
     }

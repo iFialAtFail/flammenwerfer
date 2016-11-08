@@ -136,9 +136,9 @@
             this.lblCoreComp.AutoSize = true;
             this.lblCoreComp.Location = new System.Drawing.Point(483, 62);
             this.lblCoreComp.Name = "lblCoreComp";
-            this.lblCoreComp.Size = new System.Drawing.Size(119, 13);
+            this.lblCoreComp.Size = new System.Drawing.Size(115, 13);
             this.lblCoreComp.TabIndex = 9;
-            this.lblCoreComp.Text = "Core class completeion:";
+            this.lblCoreComp.Text = "Core Class Completion:";
             // 
             // lblGenEdComp
             // 
@@ -147,9 +147,9 @@
             this.lblGenEdComp.AutoSize = true;
             this.lblGenEdComp.Location = new System.Drawing.Point(472, 86);
             this.lblGenEdComp.Name = "lblGenEdComp";
-            this.lblGenEdComp.Size = new System.Drawing.Size(130, 13);
+            this.lblGenEdComp.Size = new System.Drawing.Size(126, 13);
             this.lblGenEdComp.TabIndex = 10;
-            this.lblGenEdComp.Text = "GenEd class completeion:";
+            this.lblGenEdComp.Text = "GenEd Class Completion:";
             // 
             // lblElectiveComp
             // 
@@ -158,9 +158,9 @@
             this.lblElectiveComp.AutoSize = true;
             this.lblElectiveComp.Location = new System.Drawing.Point(467, 110);
             this.lblElectiveComp.Name = "lblElectiveComp";
-            this.lblElectiveComp.Size = new System.Drawing.Size(135, 13);
+            this.lblElectiveComp.Size = new System.Drawing.Size(131, 13);
             this.lblElectiveComp.TabIndex = 11;
-            this.lblElectiveComp.Text = "Elective class completeion:";
+            this.lblElectiveComp.Text = "Elective Class Completion:";
             // 
             // btnHelp
             // 
@@ -185,6 +185,7 @@
             // 
             // Form1
             // 
+            this.AcceptButton = this.btnSearch;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(635, 331);
