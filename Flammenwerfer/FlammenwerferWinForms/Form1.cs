@@ -54,19 +54,12 @@ namespace FlammenwerferWinForms
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string queryType;
-            if (rbFirstName.Checked)
-            {
-                queryType = "fname";
-            } else if (rbLastName.Checked)
-            {
-                queryType = "lname";
-            }
-            else
-            {
-                queryType = "sid";
-            }
-
+            string queryType = getQueryTypeFromInput();
+            performQuery(queryType);
+        }
+        #region Private Helper Methods
+        private void performQuery(string queryType)
+        {
             Query_Search query = new Query_Search(true);
             query.Search(tbQuery.Text.ToLower(), queryType);
             if (query.StudentsFoundInQuery != null)
@@ -87,5 +80,26 @@ namespace FlammenwerferWinForms
                 lblDegreeCompletion.Text = "Overall Class Completion: ";
             }
         }
+
+        private string getQueryTypeFromInput()
+        {
+            string queryType;
+            if (rbFirstName.Checked)
+            {
+                queryType = "fname";
+            }
+            else if (rbLastName.Checked)
+            {
+                queryType = "lname";
+            }
+            else
+            {
+                queryType = "sid";
+            }
+
+            return queryType;
+        }
+
+        #endregion
     }
 }
