@@ -110,7 +110,9 @@
             // 
             // tbDisplay
             // 
-            this.tbDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.tbDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbDisplay.Location = new System.Drawing.Point(139, 20);
             this.tbDisplay.MaxLength = 50000;
             this.tbDisplay.Multiline = true;
