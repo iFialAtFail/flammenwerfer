@@ -73,10 +73,16 @@ namespace FlammenwerferWinForms
             {
                 Output output = new Output(true);
                 tbDisplay.Text = output.InfoDisplay(query.StudentsFoundInQuery, true);
+                lblCoreComp.Text = "Core Completion: " + output.CourseTypes.CoreCompleted;
+                lblElectiveComp.Text = "Elective Completion: " + output.CourseTypes.ElectivesCompleted;
+                lblGenEdComp.Text = "GenEd Completion: " + output.CourseTypes.GenEdCompleted;
             }
             else
             {
                 tbDisplay.Text = "No results found";
+                lblCoreComp.Text = "Core Completion: ";
+                lblElectiveComp.Text = "Elective Completion: ";
+                lblGenEdComp.Text = "GenEd Completion: ";
             }
         }
     }

@@ -73,6 +73,7 @@
             // rbFirstName
             // 
             this.rbFirstName.AutoSize = true;
+            this.rbFirstName.Checked = true;
             this.rbFirstName.Location = new System.Drawing.Point(12, 73);
             this.rbFirstName.Name = "rbFirstName";
             this.rbFirstName.Size = new System.Drawing.Size(75, 17);
