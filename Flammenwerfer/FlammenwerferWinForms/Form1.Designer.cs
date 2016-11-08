@@ -115,6 +115,7 @@
             this.tbDisplay.MaxLength = 50000;
             this.tbDisplay.Multiline = true;
             this.tbDisplay.Name = "tbDisplay";
+            this.tbDisplay.ReadOnly = true;
             this.tbDisplay.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.tbDisplay.Size = new System.Drawing.Size(325, 299);
             this.tbDisplay.TabIndex = 7;
