@@ -52,6 +52,32 @@ namespace FlammenwerferWinForms
             
         }
 
-        
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string queryType;
+            if (rbFirstName.Checked)
+            {
+                queryType = "fname";
+            } else if (rbLastName.Checked)
+            {
+                queryType = "lname";
+            }
+            else
+            {
+                queryType = "sid";
+            }
+
+            Query_Search query = new Query_Search(true);
+            query.Search(tbQuery.Text.ToLower(), queryType);
+            if (query.StudentsFoundInQuery != null)
+            {
+                Output output = new Output(true);
+                tbDisplay.Text = output.InfoDisplay(query.StudentsFoundInQuery, true);
+            }
+            else
+            {
+                tbDisplay.Text = "No results found";
+            }
+        }
     }
 }

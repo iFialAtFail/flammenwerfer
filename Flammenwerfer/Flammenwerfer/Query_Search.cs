@@ -8,7 +8,7 @@ using System.Xml;
 
 namespace Flammenwerfer
 {
-    class Query_Search
+    public class Query_Search
     {
         #region Properties and fields
         private bool usingGUI = false;

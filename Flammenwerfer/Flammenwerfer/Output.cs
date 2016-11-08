@@ -60,7 +60,7 @@ namespace Flammenwerfer
     }
 
     //main output class which displays the query results
-    class Output
+    public class Output
     {
         //used to know whether to do the GUI methods or command line methods.
         private bool usingGUI = false;
