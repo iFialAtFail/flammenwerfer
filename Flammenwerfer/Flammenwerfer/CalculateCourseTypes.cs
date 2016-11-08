@@ -46,6 +46,14 @@ namespace Flammenwerfer
             }
         }
 
+        public string OverallCourseCompleted
+        {
+            get
+            {
+                return Math.Round(((double)(coreCounter + genEdCounter + electiveCounter) / 42)*100, 3).ToString() + "%";
+            }
+        }
+
         #endregion
 
         public void courseChecker(List<string> courseCheckerInput)

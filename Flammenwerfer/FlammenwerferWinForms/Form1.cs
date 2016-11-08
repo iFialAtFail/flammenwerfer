@@ -76,6 +76,7 @@ namespace FlammenwerferWinForms
                 lblCoreComp.Text = "Core Completion: " + output.CourseTypes.CoreCompleted;
                 lblElectiveComp.Text = "Elective Completion: " + output.CourseTypes.ElectivesCompleted;
                 lblGenEdComp.Text = "GenEd Completion: " + output.CourseTypes.GenEdCompleted;
+                lblDegreeCompletion.Text = "Overall Class Completion: " + output.CourseTypes.OverallCourseCompleted;
             }
             else
             {
@@ -83,6 +84,7 @@ namespace FlammenwerferWinForms
                 lblCoreComp.Text = "Core Class Completion: ";
                 lblElectiveComp.Text = "Elective Class Completion: ";
                 lblGenEdComp.Text = "GenEd Class Completion: ";
+                lblDegreeCompletion.Text = "Overall Class Completion: ";
             }
         }
     }

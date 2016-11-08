@@ -41,6 +41,7 @@
             this.lblElectiveComp = new System.Windows.Forms.Label();
             this.btnHelp = new System.Windows.Forms.Button();
             this.btnTest = new System.Windows.Forms.Button();
+            this.lblDegreeCompletion = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnSearch
@@ -183,12 +184,23 @@
             this.btnTest.Visible = false;
             this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
+            // lblDegreeCompletion
+            // 
+            this.lblDegreeCompletion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDegreeCompletion.AutoSize = true;
+            this.lblDegreeCompletion.Location = new System.Drawing.Point(467, 191);
+            this.lblDegreeCompletion.Name = "lblDegreeCompletion";
+            this.lblDegreeCompletion.Size = new System.Drawing.Size(126, 13);
+            this.lblDegreeCompletion.TabIndex = 14;
+            this.lblDegreeCompletion.Text = "Overall Class Completion:";
+            // 
             // Form1
             // 
             this.AcceptButton = this.btnSearch;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(635, 331);
+            this.Controls.Add(this.lblDegreeCompletion);
             this.Controls.Add(this.btnTest);
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.lblElectiveComp);
@@ -225,6 +237,7 @@
         private System.Windows.Forms.Label lblElectiveComp;
         private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.Button btnTest;
+        private System.Windows.Forms.Label lblDegreeCompletion;
     }
 }
 
