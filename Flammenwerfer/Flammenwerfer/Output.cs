@@ -60,11 +60,14 @@ namespace Flammenwerfer
     }
 
     //main output class which displays the query results
-    class Output
+    public class Output
     {
         //used to know whether to do the GUI methods or command line methods.
         private bool usingGUI = false;
         private string studentInfoString;
+
+        private CalculateCourseTypes courseTypes;
+        public CalculateCourseTypes CourseTypes { get { return courseTypes; } }
 
         /// <summary>
         /// Constructor to let the class know it's for the GUI.
@@ -180,7 +183,7 @@ namespace Flammenwerfer
                 Console.WriteLine("Percentage of Overall Degree Completion: " + courseTotal + " %");
 
                 //this will calculate the percentage of core, electives and gen eds completed
-                var courseTypes = new CalculateCourseTypes();
+                courseTypes = new CalculateCourseTypes();
                 courseTypes.courseChecker(calculator);
 
             }

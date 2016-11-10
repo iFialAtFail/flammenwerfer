@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Flammenwerfer
 {
-    class CalculateCourseTypes
+    public class CalculateCourseTypes
     {
         string core = "core";
         string genEd = "general education";
@@ -19,6 +19,42 @@ namespace Flammenwerfer
         int coreCounter = 0;
         int genEdCounter = 0;
         int electiveCounter = 0;
+
+        #region Properties
+
+        public string GenEdCompleted
+        {
+            get
+            {
+                return Math.Round(((double)genEdCounter / 8) * 100, 3).ToString() + "%";
+            }
+        }
+
+        public string ElectivesCompleted
+        {
+            get
+            {
+                return Math.Round(((double)electiveCounter / 8) * 100, 3).ToString() + "%";
+            }
+        }
+
+        public string CoreCompleted
+        {
+            get
+            {
+                return Math.Round(((double)coreCounter / 26) * 100, 3).ToString() + "%";
+            }
+        }
+
+        public string OverallCourseCompleted
+        {
+            get
+            {
+                return Math.Round(((double)(coreCounter + genEdCounter + electiveCounter) / 42)*100, 3).ToString() + "%";
+            }
+        }
+
+        #endregion
 
         public void courseChecker(List<string> courseCheckerInput)
         {

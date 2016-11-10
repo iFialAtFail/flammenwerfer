@@ -56,6 +56,54 @@ namespace FlammenwerferWinForms
             
         }
 
-        
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string queryType = getQueryTypeFromInput();
+            performQuery(queryType);
+        }
+        #region Private Helper Methods
+        private void performQuery(string queryType)
+        {
+            Query_Search query = new Query_Search(true);
+            query.Search(tbQuery.Text.ToLower(), queryType);
+            if (query.StudentsFoundInQuery != null)
+            {
+                Output output = new Output(true);
+                tbDisplay.Text = output.InfoDisplay(query.StudentsFoundInQuery, true);
+                lblCoreComp.Text = "Core Completion: " + output.CourseTypes.CoreCompleted;
+                lblElectiveComp.Text = "Elective Completion: " + output.CourseTypes.ElectivesCompleted;
+                lblGenEdComp.Text = "GenEd Completion: " + output.CourseTypes.GenEdCompleted;
+                lblDegreeCompletion.Text = "Overall Class Completion: " + output.CourseTypes.OverallCourseCompleted;
+            }
+            else
+            {
+                tbDisplay.Text = "No results found";
+                lblCoreComp.Text = "Core Class Completion: ";
+                lblElectiveComp.Text = "Elective Class Completion: ";
+                lblGenEdComp.Text = "GenEd Class Completion: ";
+                lblDegreeCompletion.Text = "Overall Class Completion: ";
+            }
+        }
+
+        private string getQueryTypeFromInput()
+        {
+            string queryType;
+            if (rbFirstName.Checked)
+            {
+                queryType = "fname";
+            }
+            else if (rbLastName.Checked)
+            {
+                queryType = "lname";
+            }
+            else
+            {
+                queryType = "sid";
+            }
+
+            return queryType;
+        }
+
+        #endregion
     }
 }
