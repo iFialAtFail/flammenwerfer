@@ -38,13 +38,17 @@ namespace FlammenwerferWinForms
 
         private void btnHelp_Click(object sender, EventArgs e)
         {
-            if (tbDisplay.Text == "debug") { btnTest.Visible = true; tbDisplay.Text = "Debug"; } //debug mode if you want to test something
-            else //Normal Help button functionality
-            {
-                btnTest.Visible = false;
-                tbDisplay.Text = "";
-                tbDisplay.Text = "To search for a student simply select your search type, then enter in the required information. The students basic information as well as the course information will be displayed, and the course completion information is displayed on the far right.";
-            }
+            /* if (tbDisplay.Text == "debug") { btnTest.Visible = true; tbDisplay.Text = "Debug"; } //debug mode if you want to test something
+             else //Normal Help button functionality
+             {
+                 btnTest.Visible = false;
+                 tbDisplay.Text = "";
+                 tbDisplay.Text = "To search for a student simply select your search type, then enter in the required information. The students basic information as well as the course information will be displayed, and the course completion information is displayed on the far right.";
+             }*/
+
+            btnTest.Visible = false;
+            tbDisplay.Text = "";
+            tbDisplay.Text = "To search for a student simply select your search type, then enter in the required information. The students basic information as well as the course information will be displayed, and the course completion information is displayed on the far right.";
         }
 
         private void btnTest_Click(object sender, EventArgs e)
